@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Genesis Shortcodes Advanced - Outermost Design</title>
+		
+	<script language="javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script language="javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/gca-popup.css" />
+	
+	<script type="text/javascript">	
+	
+		// Create our columns dialog box variable
+		var ColumnsSelection = {
+	
+			insert : function() {
+		 		
+		 		// Get the selected content, if there is any
+		 		var selectedContent = top.tinymce.activeEditor.windowManager.getParams().selectedContent;
+				
+				// Set up variable to contain our layout input value
+				var column_layout = jQuery('input:radio[name=column-layout]:checked').val();
+		 
+				// Set up output variable
+				var output = '';
+		
+				switch ( column_layout ) {
+		
+					// Output for general column configurations	
+					case 'two-column':
+						output += '[one-half-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-half-first]<br>[one-half]Place your content for the second column here.[/one-half]';
+						break;
+					case 'three-column':	
+						output += '[one-third-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-third-first]<br>[one-third]Place your content for the second column here.[/one-third]<br>[one-third]Place your content for the third column here.[/one-third]';
+						break;
+					case 'four-column':
+						output += '[one-fourth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-fourth-first]<br>[one-fourth]Place your content for the second column here.[/one-fourth]<br>[one-fourth]Place your content for the third column here.[/one-fourth]<br>[one-fourth]Place your content for the fourth column here.[/one-fourth]';
+						break;
+					case 'six-column':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[one-sixth]Place your content for the third column here.[/one-sixth]<br>[one-sixth]Place your content for the fourth column here.[/one-sixth]<br>[one-sixth]Place your content for the fifth column here.[/one-sixth]<br>[one-sixth]Place your content for the sixth column here.[/one-sixth]';
+						break;
+
+					// Output for advanced Two-Column configurations
+					case 'twothirds-onethird':
+						output += '[two-thirds-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/two-thirds-first]<br>[one-third]Place your content for the second column here.[/one-third]';
+						break;
+					case 'onethird-twothirds':
+						output += '[one-third-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-third-first]<br>[two-thirds]Place your content for the second column here.[/two-thirds]';
+						break;
+					case 'onefourth-threefourths':
+						output += '[one-fourth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-fourth-first]<br>[three-fourths]Place your content for the second column here.[/three-fourths]';
+						break;
+					case 'threefourths-onefourth':
+						output += '[three-fourths-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/three-fourths-first]<br>[one-fourth]Place your content for the second column here.[/one-fourth]';
+						break;
+					case 'onesixth-fivesixths':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[five-sixths]Place your content for the second column here.[/five-sixths]';
+						break;
+					case 'fivesixths-onesixth':
+						output += '[five-sixths-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/five-sixths-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]';
+						break;
+		
+					// Output for advanced Three-Column configurations
+					case 'onefourth-onefourth-half':
+						output += '[one-fourth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-fourth-first]<br>[one-fourth]Place your content for the second column here.[/one-fourth]<br>[two-fourths]Place your content for the third column here.[/two-fourths]';
+						break;
+					case 'half-onefourth-onefourth':
+						output += '[two-fourths-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/two-fourths-first]<br>[one-fourth]Place your content for the second column here.[/one-fourth]<br>[one-fourth]Place your content for the third column here.[/one-fourth]';
+						break;
+					case 'onefourth-half-onefourth':
+						output += '[one-fourth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-fourth-first]<br>[two-fourths]Place your content for the second column here.[/two-fourths]<br>[one-fourth]Place your content for the third column here.[/one-fourth]';
+						break;
+					case 'onesixth-onesixth-foursixths':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[four-sixths]Place your content for the third column here.[/four-sixths]';
+						break;
+					case 'foursixths-onesixth-onesixth':
+						output += '[four-sixths-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/four-sixths-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[one-sixth]Place your content for the third column here.[/one-sixth]';
+						break;
+					case 'onesixth-foursixths-onesixth':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[four-sixths]Place your content for the second column here.[/four-sixths]<br>[one-sixth]Place your content for the third column here.[/one-sixth]';
+						break;
+					case 'onesixth-twosixths-threesixths':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[two-sixths]Place your content for the second column here.[/two-sixths]<br>[three-sixths]Place your content for the third column here.[/three-sixths]';
+						break;
+					case 'threesixths-twosixths-onesixth':
+						output += '[three-sixths-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/three-sixths-first]<br>[two-sixths]Place your content for the second column here.[/two-sixths]<br>[one-sixth]Place your content for the third column here.[/one-sixth]';
+						break;
+					case 'twosixths-onesixth-threesixths':
+						output += '[two-sixths-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/two-sixths-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[three-sixths]Place your content for the third column here.[/three-sixths]';
+						break;
+					case 'threesixths-onesixth-twosixths':
+						output += '[three-sixths-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/three-sixths-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[two-sixths]Place your content for the third column here.[/two-sixths]';
+						break;
+		
+					// Output for advanced Four-Column configurations		
+					case 'onesixth-onesixth-onesixth-threesixths':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[one-sixth]Place your content for the third column here.[/one-sixth]<br>[three-sixths]Place your content for the fourth column here.[/three-sixths]';
+						break;
+					case 'threesixths-onesixth-onesixth-onesixth':
+						output += '[three-sixths-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/three-sixths-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[one-sixth]Place your content for the third column here.[/one-sixth]<br>[one-sixth]Place your content for the fourth column here.[/one-sixth]';
+						break;
+					case 'onesixth-threesixths-onesixth-onesixth':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[three-sixths]Place your content for the second column here.[/three-sixths]<br>[one-sixth]Place your content for the third column here.[/one-sixth]<br>[one-sixth]Place your content for the fourth column here.[/one-sixth]';
+						break;
+					case 'onesixth-onesixth-threesixths-onesixth':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[three-sixths]Place your content for the third column here.[/three-sixths]<br>[one-sixth]Place your content for the fourth column here.[/one-sixth]';
+						break;
+					case 'onesixth-onesixth-twosixths-twosixths':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[two-sixths]Place your content for the third column here.[/two-sixths]<br>[two-sixths]Place your content for the fourth column here.[/two-sixths]';
+						break;
+					case 'twosixths-twosixths-onesixth-onesixth':
+						output += '[two-sixths-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/two-sixths-first]<br>[two-sixths]Place your content for the second column here.[/two-sixths]<br>[one-sixth]Place your content for the third column here.[/one-sixth]<br>[one-sixth]Place your content for the fourth column here.[/one-sixth]';
+						break;
+					case 'onesixth-twosixths-onesixth-twosixths':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[two-sixths]Place your content for the second column here.[/two-sixths]<br>[one-sixth]Place your content for the third column here.[/one-sixth]<br>[two-sixths]Place your content for the fourth column here.[/two-sixths]';
+						break;	
+					case 'twosixths-onesixth-twosixths-onesixth':
+						output += '[two-sixths-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/two-sixths-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[two-sixths]Place your content for the third column here.[/two-sixths]<br>[one-sixth]Place your content for the fourth column here.[/one-sixth]';
+						break;	
+					case 'onesixth-twosixths-twosixths-onesixth':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[two-sixths]Place your content for the second column here.[/two-sixths]<br>[two-sixths]Place your content for the third column here.[/two-sixths]<br>[one-sixth]Place your content for the fourth column here.[/one-sixth]';
+						break;
+					case 'twosixths-onesixth-onesixth-twosixths':
+						output += '[two-sixths-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/two-sixths-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[one-sixth]Place your content for the third column here.[/one-sixth]<br>[two-sixths]Place your content for the fourth column here.[/two-sixths]';
+						break;
+		
+					// Output for advanced Five-Column configurations
+					case 'onesixth-onesixth-onesixth-onesixth-twosixths':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[one-sixth]Place your content for the third column here.[/one-sixth]<br>[one-sixth]Place your content for the fourth column here.[/one-sixth]<br>[two-sixths]Place your content for the fifth column here.[/two-sixths]';
+						break;
+					case 'twosixths-onesixth-onesixth-onesixth-onesixth':
+						output += '[two-sixths-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/two-sixths-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[one-sixth]Place your content for the third column here.[/one-sixth]<br>[one-sixth]Place your content for the fourth column here.[/one-sixth]<br>[one-sixth]Place your content for the fifth column here.[/one-sixth]';
+						break;
+					case 'onesixth-twosixths-onesixth-onesixth-onesixth':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[two-sixths]Place your content for the second column here.[/two-sixths]<br>[one-sixth]Place your content for the third column here.[/one-sixth]<br>[one-sixth]Place your content for the fourth column here.[/one-sixth]<br>[one-sixth]Place your content for the fifth column here.[/one-sixth]';
+						break;
+					case 'onesixth-onesixth-onesixth-twosixths-onesixth':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[one-sixth]Place your content for the third column here.[/one-sixth]<br>[two-sixths]Place your content for the fourth column here.[/two-sixths]<br>[one-sixth]Place your content for the fifth column here.[/one-sixth]';
+						break;
+					case 'onesixth-onesixth-twosixths-onesixth-onesixth':
+						output += '[one-sixth-first]' + ( selectedContent != '' ? selectedContent : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[two-sixths]Place your content for the third column here.[/two-sixths]<br>[one-sixth]Place your content for the fourth column here.[/one-sixth]<br>[one-sixth]Place your content for the fifth column here.[/one-sixth]';
+						break;
+		
+					default:
+						output += 'error';
+				
+				} //end switch
+				
+				// If a layout has been selected, do stuff 
+				if ( output != 'error' ) {
+					// Insert the column selection into tinymce
+					top.tinymce.activeEditor.windowManager.getParams().onInsert( output );
+			
+					// Close the window once we have added the output to tinymce
+					top.tinymce.activeEditor.windowManager.close();
+				}
+			},
+			
+			cancel : function() {
+				// Close the window since the cancel button has been clicked
+				top.tinymce.activeEditor.windowManager.close();
+			}
+		};
+	
+	</script>
+	
+</head>
+<body>
+	
+	<form action="/" method="get" accept-charset="utf-8">
+		<div class="column-layout-container">
+			<div class="column-layout-selector">
+			
+				<div class="description">Select your desired column configuration.</div>
+				<div id="accordion">
+					<h4>Two Columns</h4>
+					<div>
+						<div id="advanced-two-column">
+							<label title="1/2 - 1/2" class="box">
+								<img src="images/layouts/half.gif" alt="1/2 - 1/2"><br> 
+								<input type="radio" name="column-layout" id="two-column" value="two-column"> 
+							</label> 
+							<label title="1/3 - 2/3" class="box">
+								<img src="images/layouts/third_twothirds.gif" alt="1/3 - 2/3"><br> 
+								<input type="radio" name="column-layout" id="onethird-twothirds" value="onethird-twothirds"> 
+							</label> 
+							<label title="2/3 - 1/3" class="box">
+								<img src="images/layouts/twothirds_third.gif" alt="2/3 - 1/3"><br> 
+								<input type="radio" name="column-layout" id="twothirds-onethird" value="twothirds-onethird"> 
+							</label> 
+							<label title="1/4 - 3/4" class="box">
+								<img src="images/layouts/fourth_threefourths.gif" alt="1/4 - 3/4"><br> 
+								<input type="radio" name="column-layout" id="onefourth-threefourths" value="onefourth-threefourths"> 
+							</label> 
+							<label title="3/4 - 1/4" class="box">
+								<img src="images/layouts/threefourths_fourth.gif" alt="3/4 - 1/4"><br> 
+								<input type="radio" name="column-layout" id="threefourths-onefourth" value="threefourths-onefourth"> 
+							</label> 
+							<label title="1/6 - 5/6" class="box">
+								<img src="images/layouts/sixth_fivesixths.gif" alt="1/6 - 5/6"><br> 
+								<input type="radio" name="column-layout" id="onesixth-fivesixths" value="onesixth-fivesixths"> 
+							</label> 
+							<label title="5/6 - 1/6" class="box">
+								<img src="images/layouts/fivesixths_sixth.gif" alt="5/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="fivesixths-onesixth" value="fivesixths-onesixth"> 
+							</label> 
+						</div>
+						<div class="clear"></div>
+					</div>
+					<h4>Three Columns</h4>
+					<div>
+						<div id="advanced-three-column">
+							<label title="1/3 - 1/3 - 1/3" class="box">
+								<img src="images/layouts/thirds.gif" alt="1/3 - 1/3 - 1/3"><br> 
+								<input type="radio" name="column-layout" id="three-column" value="three-column"> 
+							</label> 
+							<label title="1/4 - 1/4 - 2/4" class="box">
+								<img src="images/layouts/fourth_fourth_half.gif" alt="1/4 - 1/4 - 2/4"><br> 
+								<input type="radio" name="column-layout" id="onefourth-onefourth-half" value="onefourth-onefourth-half"> 
+							</label> 
+							<label title="2/4 - 1/4 - 1/4" class="box">
+								<img src="images/layouts/half_fourth_fourth.gif" alt="2/4 - 1/4 - 1/4"><br> 
+								<input type="radio" name="column-layout" id="half-onefourth-onefourth" value="half-onefourth-onefourth"> 
+							</label> 
+							<label title="1/4 - 2/4 - 1/4" class="box">
+								<img src="images/layouts/fourth_half_fourth.gif" alt="1/4 - 2/4 - 1/4"><br> 
+								<input type="radio" name="column-layout" id="onefourth-half-onefourth" value="onefourth-half-onefourth"> 
+							</label> 
+							<label title="1/6 - 1/6 - 4/6" class="box">
+								<img src="images/layouts/sixth_sixth_foursixths.gif" alt="1/6 - 1/6 - 4/6"><br> 
+								<input type="radio" name="column-layout" id="onesixth-onesixth-foursixths" value="onesixth-onesixth-foursixths"> 
+							</label> 
+							<label title="4/6 - 1/6 - 1/6" class="box">
+								<img src="images/layouts/foursixths_sixth_sixth.gif" alt="4/6 - 1/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="foursixths-onesixth-onesixth" value="foursixths-onesixth-onesixth"> 
+							</label> 
+							<label title="1/6 - 4/6 - 1/6" class="box">
+								<img src="images/layouts/sixth_foursixths_sixth.gif" alt="1/6 - 4/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="onesixth-foursixths-onesixth" value="onesixth-foursixths-onesixth"> 
+							</label> 
+							<label title="1/6 - 2/6 - 3/6" class="box">
+								<img src="images/layouts/sixth_twosixths_threesixths.gif" alt="1/6 - 2/6 - 3/6"><br> 
+								<input type="radio" name="column-layout" id="onesixth-twosixths-threesixths" value="onesixth-twosixths-threesixths"> 
+							</label> 
+							<label title="3/6 - 2/6 - 1/6" class="box">
+								<img src="images/layouts/threesixths_twosixths_sixth.gif" alt="3/6 - 2/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="threesixths-twosixths-onesixth" value="threesixths-twosixths-onesixth"> 
+							</label> 
+							<label title="2/6 - 1/6 - 3/6" class="box">
+								<img src="images/layouts/twosixths_sixth_threesixths.gif" alt="2/6 - 1/6 - 3/6"><br> 
+								<input type="radio" name="column-layout" id="twosixths-onesixth-threesixths" value="twosixths-onesixth-threesixths"> 
+							</label> 
+							<label title="3/6 - 1/6 - 2/6" class="box">
+								<img src="images/layouts/threesixths_sixth_twosixths.gif" alt="3/6 - 1/6 - 2/6"><br> 
+								<input type="radio" name="column-layout" id="threesixths-onesixth-twosixths" value="threesixths-onesixth-twosixths"> 
+							</label> 
+						</div>
+						<div class="clear"></div>
+					</div>
+					<h4>Four Columns</h4>
+					<div>
+						<div id="advanced-four-column">
+							<label title="1/4 - 1/4 - 1/4 - 1/4" class="box">
+								<img src="images/layouts/fourths.gif" alt="1/4 - 1/4 - 1/4 - 1/4"><br> 
+								<input type="radio" name="column-layout" id="four-column" value="four-column"> 
+							</label> 
+							<label title="1/6 - 1/6 - 1/6 - 3/6" class="box">
+								<img src="images/layouts/sixth_sixth_sixth_threesixths.gif" alt="1/6 - 1/6 - 1/6 - 3/6"><br> 
+								<input type="radio" name="column-layout" id="onesixth-onesixth-onesixth-threesixths" value="onesixth-onesixth-onesixth-threesixths"> 
+							</label> 
+							<label title="3/6 - 1/6 - 1/6 - 1/6" class="box">
+								<img src="images/layouts/threesixths_sixth_sixth_sixth.gif" alt="3/6 - 1/6 - 1/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="threesixths-onesixth-onesixth-onesixth" value="threesixths-onesixth-onesixth-onesixth"> 
+							</label> 
+							<label title="1/6 - 1/6 - 3/6 - 1/6" class="box">
+								<img src="images/layouts/sixth_sixth_threesixths_sixth.gif" alt="1/6 - 1/6 - 3/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="onesixth-onesixth-threesixths-onesixth" value="onesixth-onesixth-threesixths-onesixth"> 
+							</label> 
+							<label title="1/6 - 3/6 - 1/6 - 1/6" class="box">
+								<img src="images/layouts/sixth_threesixths_sixth_sixth.gif" alt="1/6 - 3/6 - 1/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="onesixth-threesixths-onesixth-onesixth" value="onesixth-threesixths-onesixth-onesixth"> 
+							</label> 
+								<label title="1/6 - 1/6 - 2/6 - 2/6" class="box">
+								<img src="images/layouts/sixth_sixth_twosixths_twosixths.gif" alt="1/6 - 1/6 - 2/6 - 2/6"><br> 
+								<input type="radio" name="column-layout" id="onesixth-onesixth-twosixths-twosixths" value="onesixth-onesixth-twosixths-twosixths"> 
+							</label> 
+							<label title="2/6 - 2/6 - 1/6 - 1/6" class="box">
+								<img src="images/layouts/twosixths_twosixths_sixth_sixth.gif" alt="2/6 - 2/6 - 1/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="twosixths-twosixths-onesixth-onesixth" value="twosixths-twosixths-onesixth-onesixth"> 
+							</label> 
+							<label title="1/6 - 2/6 - 1/6 - 2/6" class="box">
+								<img src="images/layouts/sixth_twosixths_sixth_twosixths.gif" alt="1/6 - 2/6 - 1/6 - 2/6"><br> 
+								<input type="radio" name="column-layout" id="onesixth-twosixths-onesixth-twosixths" value="onesixth-twosixths-onesixth-twosixths"> 
+							</label> 
+							<label title="2/6 - 1/6 - 2/6 - 1/6" class="box">
+								<img src="images/layouts/twosixths_sixth_twosixths_sixth.gif" alt="2/6 - 1/6 - 2/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="twosixths-onesixth-twosixths-onesixth" value="twosixths-onesixth-twosixths-onesixth"> 
+							</label> 
+							<label title="1/6 - 2/6 - 2/6 - 1/6" class="box">
+								<img src="images/layouts/sixth_twosixths_twosixths_sixth.gif" alt="1/6 - 2/6 - 2/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="onesixth-twosixths-twosixths-onesixth" value="onesixth-twosixths-twosixths-onesixth"> 
+							</label> 
+							<label title="2/6 - 1/6 - 1/6 - 2/6" class="box">
+								<img src="images/layouts/twosixths_sixth_sixth_twosixths.gif" alt="2/6 - 1/6 - 1/6 - 2/6"><br> 
+								<input type="radio" name="column-layout" id="twosixths-onesixth-onesixth-twosixthsx" value="twosixths-onesixth-onesixth-twosixths"> 
+							</label> 
+						</div>
+						<div class="clear"></div>
+					</div>
+					<h4>Five Columns</h4>
+					<div>
+						<div id="advanced-five-column">
+							<label title="1/6 - 1/6 - 1/6 - 1/6 - 2/6" class="box">
+								<img src="images/layouts/sixth_sixth_sixth_sixth_twosixths.gif" alt="1/6 - 1/6 - 1/6 - 1/6 - 2/6"><br> 
+								<input type="radio" name="column-layout" id="onesixth-onesixth-onesixth-onesixth-twosixths" value="onesixth-onesixth-onesixth-onesixth-twosixths"> 
+							</label> 
+							<label title="2/6 - 1/6 - 1/6 - 1/6 - 1/6" class="box">
+								<img src="images/layouts/twosixths_sixth_sixth_sixth_sixth.gif" alt="2/6 - 1/6 - 1/6 - 1/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="twosixths-onesixth-onesixth-onesixth-onesixth" value="twosixths-onesixth-onesixth-onesixth-onesixth"> 
+							</label> 
+							<label title="1/6 - 2/6 - 1/6 - 1/6 - 1/6" class="box">
+								<img src="images/layouts/sixth_twosixths_sixth_sixth_sixth.gif" alt="1/6 - 2/6 - 1/6 - 1/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="onesixth-twosixths-onesixth-onesixth-onesixth" value="onesixth-twosixths-onesixth-onesixth-onesixth"> 
+							</label> 
+							<label title="1/6 - 1/6 - 1/6 - 2/6 - 1/6" class="box">
+								<img src="images/layouts/sixth_sixth_sixth_twosixths_sixth.gif" alt="1/6 - 1/6 - 1/6 - 2/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="onesixth-onesixth-onesixth-twosixths-onesixth" value="onesixth-onesixth-onesixth-twosixths-onesixth"> 
+							</label> 
+							<label title="1/6 - 1/6 - 2/6 - 1/6 - 1/6" class="box">
+								<img src="images/layouts/sixth_sixth_twosixths_sixth_sixth.gif" alt="1/6 - 1/6 - 2/6 - 1/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="onesixth-onesixth-twosixths-onesixth-onesixth" value="onesixth-onesixth-twosixths-onesixth-onesixth"> 
+							</label> 
+						</div>
+						<div class="clear"></div>
+					</div>
+					<h4>Six Columns</h4>
+					<div>
+						<div id="advanced-six-column">
+							<label title="1/6 - 1/6 - 1/6 - 1/6 - 1/6" class="box">
+								<img src="images/layouts/sixths.gif" alt="1/6 - 1/6 - 1/6 - 1/6 - 1/6"><br> 
+								<input type="radio" name="column-layout" id="six-column" value="six-column"> 
+							</label> 
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="column-layout-footer">
+			<a href="javascript:ColumnsSelection.insert()" id="insert">Insert Selected Layout</a> 
+			<a href="javascript:ColumnsSelection.cancel()" id="cancel">Cancel</a> 
+		</div>
+
+	</form>
+
+
+	<script language="javascript">
+
+		// Generates colored border on selected layout
+		var selected_class = 'selected';
+
+		$( ".column-layout-selector input[type='radio']" ).click( function() {
+			$( ".column-layout-selector label.box" ).removeClass(selected_class);
+			$( event.target ).parent('label.box').addClass(selected_class);
+		});
+		
+		// Initiates accordion functionality
+		$(function() {
+			$( "#accordion" ).accordion({
+				collapsible: false,
+				//active: false,
+				heightStyle: "content",
+				icons: { "header": "ui-icon-closed", "activeHeader": "ui-icon-open" }
+			});
+		});
+		
+		// Initiates tooltip functionality
+		$(function() {
+			$( document ).tooltip({
+			  position: {
+				using: function( position, feedback ) {
+				  $( this ).css( position );
+				  $( "<div>" )
+					.addClass( "arrow" )
+					.addClass( feedback.vertical )
+					.addClass( feedback.horizontal )
+					.appendTo( this );
+				}
+			  }
+			});
+		});
+	
+	</script>
+
+</body>
+</html>

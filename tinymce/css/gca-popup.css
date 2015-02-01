@@ -1,0 +1,207 @@
+/* General Popup Styling - Genesis Columns Advanced -----*/
+
+html, body {
+	background-color: #fff;
+	color: #444;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	padding: 0;
+}
+h2 {
+	clear: both;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0;
+}
+h4 {
+	clear: both;
+	cursor: pointer;
+	border-bottom: 1px solid #dfdfdf;
+	font-size: 14px;
+	line-height: 30px;
+	margin: 10px 10px 0 0;
+}
+p {
+	margin: 10px 10px 0 0;
+}
+.description {
+	font-size: 13px;
+	font-style: italic;
+}
+
+ 
+/* Column Layout Container Styling ----------------------*/ 
+
+.column-layout-container {
+	padding: 10px 10px 80px 10px;
+}
+.column-layout-general {
+	height: 110px;
+}
+.column-layout-selector input {
+	display: none;
+	text-align: center;
+}
+.column-layout-selector input#default-layout {
+	display: inline;
+}
+.column-layout-selector label.box {
+	display: block;
+	float: left;
+	margin: 10px 10px 0 0;
+	text-align: center;
+}
+.column-layout-selector label.box img {
+	border: 3px solid transparent;
+	max-width: 85px;
+}
+.column-layout-selector label.box img:hover {
+	border: 3px solid #ddd;
+}
+.column-layout-selector label.box.selected img {
+	border: 3px solid #ccc;
+}
+.column-layout-footer {
+	clear: both;
+	background: #fcfcfc;
+	border-top: 1px solid #dfdfdf;
+	text-align: right;
+	padding: 10px;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+div.clear {
+	clear: both;
+	padding-top: 8px;
+}
+
+
+/* jQuery UI - Accordion & Tooltip Styling ----------------------*/ 
+
+.ui-icon-open {
+	background-image: url('../images/arrows.png');
+	background-position: -2px 2px;
+	background-size: 16px auto;
+	display: inline-block;
+	height: 16px;
+	padding-right: 18px;
+}
+.ui-icon-closed {
+	background-image: url('../images/arrows.png');
+	background-position: -2px -113px;
+	background-size: 16px auto;
+	display: inline-block;
+	height: 16px;
+	padding-right: 18px;
+}
+/* Removes "blue blur" on selected items */
+.ui-state-focus {
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+	outline: none;
+}
+.ui-accordion-content {
+	padding-top: 5px;
+}
+.ui-tooltip, .arrow:after {
+	background: black;
+	position: absolute;
+}
+.ui-tooltip {
+	border-radius: 3px;
+	-webkit-box-shadow: 0 3px 5px rgba(0,0,0,.2);
+	box-shadow: 0 3px 5px rgba(0,0,0,.2);
+	color: #fff;
+	font-size: 12px;
+	padding: 5px 8px 4px 8px;
+	text-align: center;
+}
+.arrow {
+	width: 70px;
+	height: 16px;
+	overflow: hidden;
+	position: absolute;
+	left: 50%;
+	margin-left: -30px;
+	bottom: -16px;
+}
+.arrow.top {
+	top: -16px;
+	bottom: auto;
+}
+.arrow.left {
+	left: 20%;
+}
+.arrow:after {
+	content: "";
+	position: absolute;
+	left: 20px;
+	top: -20px;
+	width: 21px;
+	height: 21px;
+	box-shadow: 6px 5px 9px -9px black;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.arrow.top:after {
+	bottom: -20px;
+	top: auto;
+}
+
+
+/* WP Button Styling -----------------------------------*/ 
+
+#insert {
+	background: #2ea2cc;
+	border-radius: 3px;
+	border: 1px solid #2ea2cc;
+	box-shadow: rgba(120, 200, 230, 0.498039) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.14902) 0px 1px 0px 0px;
+	-webkit-box-shadow: rgba(120, 200, 230, 0.498039) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.14902) 0px 1px 0px 0px;
+	box-sizing: border-box;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: normal;
+	height: 30px;
+	line-height: 28px;
+	padding: 0 12px 2px;
+	text-align: center;
+	text-decoration: none;
+}
+#insert:hover{
+	background: #1e8cbe;
+	border-color: #0074a2;
+	-webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
+	box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
+	color: #fff;
+}
+#cancel {
+	color: #555;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background: #f7f7f7;
+	-webkit-box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
+	box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
+	vertical-align: top;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: normal;
+	height: 30px;
+	line-height: 28px;
+	padding: 0 12px 2px;
+	text-align: center;
+	text-decoration: none;
+}
+#cancel:hover {
+	background: #fafafa;
+	border-color: #999;
+	color: #222;
+}
