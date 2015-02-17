@@ -3,7 +3,7 @@
 Plugin Name: Genesis Columns Advanced
 Plugin URI: http://www.outermostdesign.com
 Description: Generates shortcodes for all 35 possible column layouts when using Genesis column classes.
-Version: 1.0.0
+Version: 1.0.1
 Author: Nick Diego
 Author URI: http://www.outermostdesign.com
 Text Domain: genesis-custom-headers
@@ -62,6 +62,19 @@ function gca_add_tinymce_plugin( $plugin_array ) {
 function gca_register_mce_button( $buttons ) {
     array_push( $buttons, 'gca_button' );
     return $buttons;
+}
+
+add_filter( 'the_content', 'gca_shortcode_empty_paragraph_fix' );
+/**
+ * Filters the content to remove any extra paragraph or break tags caused by shortcodes.
+ */
+function gca_shortcode_empty_paragraph_fix( $content ) {
+    $array = array(
+        '<p>['    => '[',
+        ']</p>'   => ']',
+        ']<br />' => ']'
+    );
+    return strtr( $content, $array );
 }
 
 add_action( 'wp_enqueue_scripts', 'gca_frontend_scripts_enqueue' );

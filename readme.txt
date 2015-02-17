@@ -3,7 +3,7 @@ Contributors: ndiego, outermostdesign
 Tags: columns, shortcode, genesis, Genesis Framework, genesiswp, TinyMCE, admin
 Requires at least: 3.6
 Tested up to: 4.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,10 +11,10 @@ Generates shortcodes for all 35 possible column layouts when using Genesis colum
 
 == Description ==
 
-This plugin generates shortcodes for every column configuration available with the column classes built into the Genesis Framework by [StudioPress](http://www.studiopress.com). Shortcodes are easily added using a custom button in your Wordpress editor.
+This plugin generates shortcodes for every column configuration available with the column classes provided by the Genesis Framework by [StudioPress](http://www.studiopress.com). Shortcodes are easily added using a custom button in your Wordpress editor.
 
 = Plugin Highlights =
-* 35 different responsive column configuration available
+* 35 different responsive column configurations available
 * Includes two utility shortcodes to assist with layout
 * Only adds one button to your Wordpress editor
 * Custom button design integrates seamlessly with the core Wordpress aesthetic
@@ -26,8 +26,8 @@ If you have questions or would like to request additional features, such as addi
 == Installation ==
 
 1. You have a couple options:
-	* *Go to Plugins->Add New and search for "Genesis Columns Advanced”. Once found, click "Install".
-	* *Download the folder from Wordpress.org and zip the folder. Then upload via Plugins->Add New->Upload.
+	* Go to Plugins->Add New and search for "Genesis Columns Advanced”. Once found, click "Install".
+	* Download the folder from Wordpress.org and zip the folder. Then upload via Plugins->Add New->Upload.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. From the ‘Plugins’ page, head to a post/page and check out the new button in your editor.
 4. If you have any implementation questions, please post in the plugin support forum.
@@ -38,7 +38,7 @@ If you have questions or would like to request additional features, such as addi
 
 = Why is there no option for five even columns, or columns broken down by fifths? =
 
-This was a conscious decision in order for the plugin stay inline with the column classes offered by the Genesis Framework. The informational page on Genesis’s column classes can be found on [Studiopress.com](http://my.studiopress.com/tutorials/content-column-classes/). As of Genesis v2.1.2, there unfortunately is no option for fifths. If this changes in the future, I will update this plugin. 
+This was a conscious decision in order for the plugin to stay inline with the column classes offered by the Genesis Framework. The informational page on Genesis’s column classes can be found on [Studiopress.com](http://my.studiopress.com/tutorials/content-column-classes/). As of Genesis v2.1.2, there unfortunately is no option for fifths. If this changes in the future, I will update this plugin. 
 
 == Screenshots ==
 
@@ -51,4 +51,7 @@ This was a conscious decision in order for the plugin stay inline with the colum
 
 = 1.0.0 =
 * Initial Release
+
+= 1.0.1 =
+* Fixed bug associated with wpautop
 
