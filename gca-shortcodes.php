@@ -1,7 +1,7 @@
 <?php
 
 defined( 'WPINC' ) or die;
-
+	
 // Strip content of AutoP
 // Courtesy of Mathew Smith (Genesis Easy Columns)
 function gca_strip_autop( $content ){
@@ -75,12 +75,12 @@ add_shortcode('one-fourth','gca_onefourth');
 function gca_twofourths_first( $atts, $content = null ) {
 	return '<div class="two-fourths first">' . gca_strip_autop( $content ) . '</div>';
 }
-add_shortcode("two-fourth-first","gca_twofourths_first");
+add_shortcode("two-fourths-first","gca_twofourths_first");
 
 function gca_twofourths( $atts, $content = null ) {
 	return '<div class="two-fourths">' . gca_strip_autop( $content ) . '</div>';
 }
-add_shortcode('two-fourth','gca_twofourths');
+add_shortcode('two-fourths','gca_twofourths');
 	
 function gca_threefourths_first( $atts, $content = null ) {
 	return '<div class="three-fourths first">' . gca_strip_autop( $content ) . '</div>';
