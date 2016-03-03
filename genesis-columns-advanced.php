@@ -45,6 +45,7 @@ function gca_mce_button() {
     if ( 'true' == get_user_option( 'rich_editing' ) ) {
         add_filter( 'mce_external_plugins', 'gca_add_tinymce_plugin' );
         add_filter( 'mce_buttons', 'gca_register_mce_button' );
+        add_filter( 'mce_external_languages', 'gca_add_tinymce_translations' );
     }
 }
 
@@ -54,6 +55,14 @@ function gca_mce_button() {
 function gca_add_tinymce_plugin( $plugin_array ) {
     $plugin_array['gca_button'] = plugin_dir_url( __FILE__ ) . 'tinymce/gca-plugin.js';
     return $plugin_array;
+}
+
+/**
+ * Add translations to TinyMCE button and HTML popup
+ */
+function gca_add_tinymce_translations( $plugin_array ) {
+    $locales['gca_button'] = plugin_dir_url( __FILE__ ) . 'tinymce/gca-plugin-translations.php';
+    return $locales;
 }
 
 /**

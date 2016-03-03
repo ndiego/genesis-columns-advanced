@@ -15,6 +15,8 @@ Generates shortcodes for all 35 possible column layouts when using Genesis colum
 This plugin generates shortcodes for every column configuration available with the column classes provided by the Genesis Framework by [StudioPress](http://www.studiopress.com). Shortcodes are easily added using a custom button in your Wordpress editor.
 
 = Plugin Highlights =
+* **New** All shortcodes now support the "class" attribute
+* **New** A column container utility shortcode has been added, see the FAQ for more info
 * 35 different responsive column configurations available
 * Includes two utility shortcodes to assist with layout
 * Only adds one button to your Wordpress editor
@@ -69,6 +71,15 @@ The “first” shortcodes are used for the first column in a row of columns.
 
 * [clearfix] - Adds a clearfix
 * [vertical-spacer] – Adds a clear as well as some vertical separation
+* [column-container] …Column Content… [/column-container] – Useful for wrapping columns
+
+**Class Attribute**
+
+All shortcodes accept a "class" attribute. This allows you to add classes to any column or utility function. Classes should be space separated. See below for usage examples:
+
+* [one-half-first class="col1"] …Column Content… [/one-half-first]
+* [clearfix class="class1 class2"]
+* [column-container class="wrapper-class"] …Column Content… [/column-container]
 
 Have an idea for another utility shortcode? Let us know in the support forums. 
 

@@ -29,8 +29,9 @@
 						});
 					}},
 					{ text: 'Utilities', menu: [
-						{ text: 'Clearfix', onclick: function() { editor.insertContent( '[clearfix]' ) } },
-						{ text: 'Vertical Spacer', onclick: function() { editor.insertContent( '[vertical-spacer]' ) } }
+						{ text: 'Clearfix', onclick: function() { editor.insertContent( '[clearfix]' ); } },
+						{ text: 'Vertical Spacer', onclick: function() { editor.insertContent( '[vertical-spacer]' ); } },
+						{ text: 'Column Container', onclick: function() { editor.insertContent( '[column-container]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : 'Place your columns in this container.' ) + '[/column-container]' ); } },
 					]}
 				]
 			}); // end addButton
