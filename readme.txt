@@ -4,7 +4,7 @@ Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: columns, shortcode, genesis, Genesis Framework, genesiswp, TinyMCE, admin
 Requires at least: 3.6
 Tested up to: 4.4.2
-Stable tag: 1.0.4
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,7 +71,7 @@ The “first” shortcodes are used for the first column in a row of columns.
 
 * [clearfix] - Adds a clearfix
 * [vertical-spacer] – Adds a clear as well as some vertical separation
-* [column-container] …Column Content… [/column-container] – Useful for wrapping columns
+* [column-container] …Column Content… [/column-container] – Useful for wrapping column rows
 
 **Class Attribute**
 
@@ -91,6 +91,10 @@ Have an idea for another utility shortcode? Let us know in the support forums.
 4. A screenshot of the frontend featuring an advanced three column and an advanced two column layout. 
 
 == Changelog ==
+
+= 1.1.0 =
+* Added class attributes to all shortcodes
+* Added the column container utility shortcode
 
 = 1.0.4 =
 * Updated readme

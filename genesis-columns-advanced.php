@@ -3,7 +3,7 @@
 Plugin Name: Genesis Columns Advanced
 Plugin URI: http://www.outermostdesign.com
 Description: Generates shortcodes for all 35 possible column layouts when using Genesis column classes.
-Version: 1.0.4
+Version: 1.1.0
 Author: Nick Diego
 Author URI: http://www.outermostdesign.com
 Text Domain: genesis-custom-headers
@@ -37,11 +37,11 @@ add_action('admin_head', 'gca_mce_button');
  * Adds our columns shortcode tinymce button
  */
 function gca_mce_button() {
-    // check user permissions
+    // Check user permissions
     if ( !current_user_can( 'edit_posts' ) && !current_user_can( 'edit_pages' ) ) {
         return;
     }
-    // check if WYSIWYG is enabled and if the portfolio shortcode is enabled
+    // Check if WYSIWYG is enabled
     if ( 'true' == get_user_option( 'rich_editing' ) ) {
         add_filter( 'mce_external_plugins', 'gca_add_tinymce_plugin' );
         add_filter( 'mce_buttons', 'gca_register_mce_button' );
@@ -60,7 +60,7 @@ function gca_add_tinymce_plugin( $plugin_array ) {
 /**
  * Add translations to TinyMCE button and HTML popup
  */
-function gca_add_tinymce_translations( $plugin_array ) {
+function gca_add_tinymce_translations( $locales ) {
     $locales['gca_button'] = plugin_dir_url( __FILE__ ) . 'tinymce/gca-plugin-translations.php';
     return $locales;
 }

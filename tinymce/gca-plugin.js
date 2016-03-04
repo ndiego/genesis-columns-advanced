@@ -4,7 +4,7 @@
 (function() {
 
 	if ( typeof tinymce != 'undefined' ) {
-	
+		
 		tinymce.PluginManager.add( 'gca_button', function( editor, url ) {
 	
 			editor.addButton( 'gca_button', {
