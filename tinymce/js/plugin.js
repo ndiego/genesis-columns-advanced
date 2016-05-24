@@ -8,12 +8,12 @@
 		
 		tinymce.PluginManager.add( 'gca_button', function( editor, url ) {
 		
-			var selectedContent = ( editor.selection.getContent() != '' ? editor.selection.getContent() : '' );
+			//var selectedContent = ( editor.selection.getContent() != '' ? editor.selection.getContent() : '' );
 	
 			editor.addButton( 'gca_button', {
 				type: 'menubutton',
 				title: 'Insert Columns',
-				image: url + '/images/icon.png',
+				image: url + '/../images/icon.png',
 				menu: [
 					{ text: '2 Columns', onclick: function() { editor.insertContent( '[one-half-first]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : 'Place your content for the first column here.' ) + '[/one-half-first]<br>[one-half]Place your content for the second column here.[/one-half]<br>' ); }},
 					{ text: '3 Columns', onclick: function() { editor.insertContent( '[one-third-first]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : 'Place your content for the first column here.' ) + '[/one-third-first]<br>[one-third]Place your content for the second column here.[/one-third]<br>[one-third]Place your content for the third column here.[/one-third]<br>' ); }},
@@ -23,7 +23,7 @@
 					{ text: 'Utilities', menu: [
 						{ text: 'Clearfix', onclick: function() { editor.insertContent( '[clearfix]' ); } },
 						{ text: 'Vertical Spacer', onclick: function() { editor.insertContent( '[vertical-spacer]' ); } },
-						{ text: 'Column Container', onclick: function() { editor.insertContent( '[column-container]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : 'Place your columns in this container.' ) + '[/column-container]' ); } },
+						{ text: 'Columns Container', onclick: function() { editor.insertContent( '[columns-container]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : 'Place your columns in this container.' ) + '[/columns-container]' ); } },
 					]}
 				]
 			}); // end addButton

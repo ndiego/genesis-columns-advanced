@@ -16,7 +16,7 @@ This plugin generates shortcodes for every column configuration available with t
 
 = Plugin Highlights =
 * **New** All shortcodes now support the "class" attribute
-* **New** A column container utility shortcode has been added, see the FAQ for more info
+* **New** Added a columns container utility shortcode, see the FAQ for more info
 * 35 different responsive column configurations available
 * Includes two utility shortcodes to assist with layout
 * Only adds one button to your Wordpress editor
@@ -71,7 +71,7 @@ The “first” shortcodes are used for the first column in a row of columns.
 
 * [clearfix] - Adds a clearfix
 * [vertical-spacer] – Adds a clear as well as some vertical separation
-* [column-container] …Column Content… [/column-container] – Useful for wrapping column rows
+* [columns-container] …Column Content… [/columns-container] – Useful for wrapping column rows
 
 **Class Attribute**
 
@@ -79,7 +79,7 @@ All shortcodes accept a "class" attribute. This allows you to add classes to any
 
 * [one-half-first class="col1"] …Column Content… [/one-half-first]
 * [clearfix class="class1 class2"]
-* [column-container class="wrapper-class"] …Column Content… [/column-container]
+* [columns-container class="wrapper-class"] …Column Content… [/columns-container]
 
 Have an idea for another utility shortcode? Let us know in the support forums. 
 
@@ -94,7 +94,7 @@ Have an idea for another utility shortcode? Let us know in the support forums.
 
 = 1.1.0 =
 * Added class attributes to all shortcodes
-* Added the column container utility shortcode
+* Added the columns container utility shortcode
 
 = 1.0.4 =
 * Updated readme

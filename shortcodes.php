@@ -24,11 +24,11 @@ function gca_spacer( $atts ) {
 }
 add_shortcode( 'vertical-spacer', 'gca_spacer' );
 
-function gca_column_container( $atts, $content = null ) {
+function gca_columns_container( $atts, $content = null ) {
     $atts = shortcode_atts( array( 'class' => '' ), $atts );
 	return '<div class="' . $atts['class'] . '" style="overflow: auto;">' . gca_strip_autop( $content ) . '</div>';
 }
-add_shortcode( 'column-container', 'gca_column_container' );
+add_shortcode( 'columns-container', 'gca_columns_container' );
 	
 // Column Shortcodes - HALVES
 	

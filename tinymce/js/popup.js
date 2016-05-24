@@ -14,12 +14,12 @@ jQuery(document).ready(function($){
 		// Set up output variable
 		var output = '';
 		
-		var first_column  = ( selecvtedContent != '' ? selectedContent : 'Place your content for the first column here.' );
-		var second_column = 'Place your content for the second column here.';
-		var third_column  = 'Place your content for the third column here.';
-		var fourth_column = 'Place your content for the fourth column here.';
-		var fifth_column  = 'Place your content for the fifth column here.';
-		var sixth_column  = 'Place your content for the sixth column here.';
+		var first_column  = ( selectedContent != '' ? selectedContent : gca_localize_scripts.first_column );
+		var second_column = gca_localize_scripts.second_column;
+		var third_column  = gca_localize_scripts.third_column;
+		var fourth_column = gca_localize_scripts.fourth_column;
+		var fifth_column  = gca_localize_scripts.fifth_column;
+		var sixth_column  = gca_localize_scripts.sixth_column;
 
 		switch ( column_layout ) {
 
@@ -204,9 +204,9 @@ jQuery(document).ready(function($){
 		$(this).toggleClass( 'show-title' );
 		
 		if ( $(this).hasClass( 'show-title' ) ) {
-			$(this).text( 'Hide Titles' );
+			$(this).text( gca_localize_scripts.hide_titles );
 		} else {
-			$(this).text( 'Show Titles' );
+			$(this).text( gca_localize_scripts.show_titles );
 		}
 	});
 
