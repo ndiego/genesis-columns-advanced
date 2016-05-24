@@ -1,13 +1,6 @@
 /* General Popup Styling - Genesis Columns Advanced -----*/
 
-html, body {
-	background-color: #fff;
-	color: #444;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 14px;
-	font-weight: normal;
-	padding: 0;
-}
+
 h2 {
 	clear: both;
 	font-size: 16px;
@@ -25,58 +18,85 @@ h4 {
 p {
 	margin: 10px 10px 0 0;
 }
-.description {
-	font-size: 13px;
-	font-style: italic;
-}
+
 
  
 /* Column Layout Container Styling ----------------------*/ 
 
-.column-layout-container {
-	padding: 10px 10px 80px 10px;
+
+#gca_popup_form {
+	overflow: auto;
+	max-height: 100%;
 }
-.column-layout-general {
-	height: 110px;
+#gca_popup_form .gca-popup-wrapper {
+	padding: 15px 11px 80px;
+	overflow: hidden;
 }
-.column-layout-selector input {
+#gca_popup_form .gca-column-select {
+	margin: 0 6px 5px;
+}
+#gca_column_select {
+	border: 1px solid #ddd;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+}
+#gca_popup_form .description {
+	line-height: 28px;
+    padding-left: 5px;
+}
+
+
+
+#gca_toggle_titles {
+	color: #0073aa;
+	text-decoration: underline;
+	font-size: 13px;
+	line-height: 28px;
+	display: inline-block;
+	float: right;
+}
+#gca_toggle_titles:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+#gca_popup_form .show-title {
+	display: inline-block !important;
+}
+
+.gca-column-layouts input {
 	display: none;
 	text-align: center;
 }
-.column-layout-selector input#default-layout {
-	display: inline;
-}
-.column-layout-selector label.box {
+.gca-column-layouts label.layout {
+	border: 3px solid transparent;
 	display: block;
 	float: left;
-	margin: 10px 10px 0 0;
+	margin: 6px 5px 0 0;
 	text-align: center;
+	background-color: #fff;
+	padding: 3px;
+	cursor:	pointer;
 }
-.column-layout-selector label.box img {
-	border: 3px solid transparent;
-	max-width: 85px;
+.gca-column-layouts label.layout:nth-child(5n) {
+	margin-right: 0;
 }
-.column-layout-selector label.box img:hover {
+.gca-column-layouts label.layout:hover {
 	border: 3px solid #ddd;
 }
-.column-layout-selector label.box.selected img {
+.gca-column-layouts label.layout.selected {
 	border: 3px solid #ccc;
 }
-.column-layout-footer {
-	clear: both;
-	background: #fcfcfc;
-	border-top: 1px solid #dfdfdf;
-	text-align: right;
-	padding: 10px;
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	left: 0;
+
+#gca_popup_form .layout-title {
+    font-size: 12px;
+    max-width: 85px;
+    white-space: normal;
+    text-align: center;
+    padding-top: 5px;
+    display: none;
 }
-div.clear {
-	clear: both;
-	padding-top: 8px;
-}
+
 
 
 /* jQuery UI - Accordion & Tooltip Styling ----------------------*/ 
@@ -102,23 +122,25 @@ div.clear {
 	-moz-box-shadow: none !important;
 	-webkit-box-shadow: none !important;
 	box-shadow: none !important;
-	outline: none;
+	outline: none !important;
 }
 .ui-accordion-content {
-	padding-top: 5px;
+	padding-top: 5px !important;
 }
 .ui-tooltip, .arrow:after {
-	background: black;
-	position: absolute;
+	background: black !important;
+	position: absolute !important;
 }
 .ui-tooltip {
-	border-radius: 3px;
-	-webkit-box-shadow: 0 3px 5px rgba(0,0,0,.2);
-	box-shadow: 0 3px 5px rgba(0,0,0,.2);
-	color: #fff;
-	font-size: 12px;
-	padding: 5px 8px 4px 8px;
-	text-align: center;
+	border-color: black !important;
+	border-radius: 3px !important;
+	-webkit-box-shadow: 0 3px 5px rgba(0,0,0,.2) !important;
+	box-shadow: 0 3px 5px rgba(0,0,0,.2) !important;
+	color: #fff !important;
+	font-size: 12px !important;
+	padding: 1px 8px 0px 8px !important;
+	text-align: center !important;
+	z-index: 1000000000 !important;
 }
 .arrow {
 	width: 70px;
@@ -154,54 +176,22 @@ div.clear {
 }
 
 
-/* WP Button Styling -----------------------------------*/ 
+#gca_popup_form .submitbox {
+    padding: 8px 16px;
+    background: #fcfcfc;
+    border-top: 1px solid #ddd;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
 
-#insert {
-	background: #2ea2cc;
-	border-radius: 3px;
-	border: 1px solid #2ea2cc;
-	box-shadow: rgba(120, 200, 230, 0.498039) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.14902) 0px 1px 0px 0px;
-	-webkit-box-shadow: rgba(120, 200, 230, 0.498039) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0.14902) 0px 1px 0px 0px;
-	box-sizing: border-box;
-	color: rgb(255, 255, 255);
-	cursor: pointer;
-	display: inline-block;
-	font-size: 13px;
-	font-weight: normal;
-	height: 30px;
-	line-height: 28px;
-	padding: 0 12px 2px;
-	text-align: center;
-	text-decoration: none;
+#gca_insert_layout {
+	float: right;
+	line-height: 25px;
 }
-#insert:hover{
-	background: #1e8cbe;
-	border-color: #0074a2;
-	-webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
-	box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
-	color: #fff;
+#gca_cancel {
+	float: left;
+	line-height: 25px;
 }
-#cancel {
-	color: #555;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	background: #f7f7f7;
-	-webkit-box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
-	box-shadow: inset 0 1px 0 #fff,0 1px 0 rgba(0,0,0,.08);
-	vertical-align: top;
-	box-sizing: border-box;
-	cursor: pointer;
-	display: inline-block;
-	font-size: 13px;
-	font-weight: normal;
-	height: 30px;
-	line-height: 28px;
-	padding: 0 12px 2px;
-	text-align: center;
-	text-decoration: none;
-}
-#cancel:hover {
-	background: #fafafa;
-	border-color: #999;
-	color: #222;
-}
+

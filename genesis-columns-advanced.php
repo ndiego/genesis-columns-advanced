@@ -30,7 +30,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 defined( 'WPINC' ) or die;
 
-include_once dirname( __FILE__ ) . '/gca-shortcodes.php';
+include_once dirname( __FILE__ ) . '/shortcodes.php';
 
 add_action('admin_head', 'gca_mce_button');
 /**
@@ -96,4 +96,28 @@ function gca_frontend_scripts_enqueue() {
 	if ( ! function_exists('genesis_pre') ) {
     	wp_enqueue_style( 'gca-optional-styles',  plugin_dir_url( __FILE__ ) . 'css/gca-optional-styles.css' );
     }
+}
+
+add_action( 'admin_enqueue_scripts', 'gca_admin_scripts_enqueue' );
+/**
+ * Loads scripts to the frontend
+ */
+function gca_admin_scripts_enqueue() {
+		
+		wp_register_script( 'gcs-popup-scripts', plugin_dir_url( __FILE__ ) . 'tinymce/popup.js' );
+       	wp_enqueue_script( 'gcs-popup-scripts' );
+
+    	wp_enqueue_style( 'gca-admin-styles',  plugin_dir_url( __FILE__ ) . 'tinymce/css/gca-popup.css' );
+    	
+}
+
+
+add_action( 'wp_ajax_gca_insert_popup', 'gca_insert_popup_form' );
+
+function gca_insert_popup_form() {
+
+	
+            include dirname( __FILE__ ) . '/tinymce/popup.php';
+            exit;
+
 }
