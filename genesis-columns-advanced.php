@@ -122,17 +122,27 @@ function gca_admin_scripts_enqueue() {
 		'gca-popup-scripts', 
 		'gca_localize_scripts', 
 		array( 
-			'first_column' 	=> __( 'Place your content for the first column here.', 'genesis-columns-advanced' ), 
-			'second_column' => __( 'Place your content for the second column here.', 'genesis-columns-advanced' ),
-			'third_column'	=> __( 'Place your content for the third column here.', 'genesis-columns-advanced' ),
-			'fourth_column'	=> __( 'Place your content for the fourth column here.', 'genesis-columns-advanced' ),
-			'fifth_column'	=> __( 'Place your content for the fifth column here.', 'genesis-columns-advanced' ),
-			'sixth_column'	=> __( 'Place your content for the sixth column here.', 'genesis-columns-advanced' ),
+			'first_column' 	 => __( 'Place your content for the first column here.', 'genesis-columns-advanced' ), 
+			'second_column'  => __( 'Place your content for the second column here.', 'genesis-columns-advanced' ),
+			'third_column'	 => __( 'Place your content for the third column here.', 'genesis-columns-advanced' ),
+			'fourth_column'  => __( 'Place your content for the fourth column here.', 'genesis-columns-advanced' ),
+			'fifth_column'	 => __( 'Place your content for the fifth column here.', 'genesis-columns-advanced' ),
+			'sixth_column'	 => __( 'Place your content for the sixth column here.', 'genesis-columns-advanced' ),
 			
-			'show_titles'	=> __( 'Show Titles', 'genesis-columns-advanced' ),
-			'hide_titles'	=> __( 'Hide Titles', 'genesis-columns-advanced' ),
+			'missing_layout' => __( 'You forgot to select a column layout!', 'genesis-columns-advanced' ),
+			
+			'show_titles'	 => __( 'Show Titles', 'genesis-columns-advanced' ),
+			'hide_titles'	 => __( 'Hide Titles', 'genesis-columns-advanced' ),
 		)
 	);
 
 	wp_enqueue_style( 'gca-popup-styles',  plugin_dir_url( __FILE__ ) . 'tinymce/css/popup.css' );
+}
+
+
+add_action( 'admin_print_footer_scripts', 'gca_popup', 100 );
+
+function gca_popup() {
+	include dirname( __FILE__ ) . '/tinymce/popup.php';
+	exit;
 }

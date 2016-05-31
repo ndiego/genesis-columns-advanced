@@ -1,214 +1,223 @@
 
-jQuery(document).ready(function($){
+var gca_popup;
+
+( function($) { 
+
+	var editor, selected, layout, firstColumnClass, secondColumnClass, thirdColumnClass, fourthColumnClass, fifthColumnClass, sixthColumnClass, output, 
+		inputs = {},
+		firstColumnText   = gca_localize_scripts.first_column,
+		secondColumnText  = gca_localize_scripts.second_column,
+		thirdColumnText   = gca_localize_scripts.third_column,
+		fourthColumnText  = gca_localize_scripts.fourth_column,
+		fifthColumnText   = gca_localize_scripts.fifth_column,
+		sixthColumnText   = gca_localize_scripts.sixth_column,
+		missingLayout     = gca_localize_scripts.missing_layout;
+
+	gca_popup = {
 	
-
-	// Insert the shortcodes of the selected layout on button click
-	$( document ).on( 'click', '#gca_insert_layout', function() {
-
-		// Get the selected content, if there is any
-		var selectedContent = top.tinymce.activeEditor.windowManager.getParams().selectedContent;
+		init: function() {
+			inputs.wrap     = $( '#gca_popup_wrap' );
+			inputs.backdrop = $( '#gca_popup_backdrop' );
+			inputs.insert   = $( '#gca_popup_insert' );
+			inputs.reset    = $( '#gca_popup_reset' );
+			inputs.close    = $( '#gca_popup_close' );
+			
+			inputs.columnSelect  = $( '#gca_column_select' );
+			inputs.toggleTitles  = $( '#gca_toggle_titles' );
+			inputs.layoutSelect  = $( '.gca-column-layouts input[type="radio"]' );
+			inputs.classes       = $( '.gca-column-classes input' );
+			
+			// Insert shortcodes
+			inputs.insert.click( function( event ) {
+				event.preventDefault();
+				gca_popup.insert();
+			});
+			
+			// Reset all selection and classes in popup
+			inputs.reset.click( function( event ) {
+				event.preventDefault();
+				gca_popup.reset();
+			});
+			
+			// Close the popup
+			inputs.close.add( inputs.backdrop ).add( '#gca_popup_cancel button' ).click( function( event ) {
+				event.preventDefault();
+				gca_popup.close();
+			});
+			
+			// Toggle different column layouts
+			inputs.columnSelect.change( function() {
+				var layouts = $(this).parent().siblings( '.gca-column-layouts' );
+	
+				if ( $(this).val() == 'all' ) {
+					layouts.children().show();
+				} else {
+					layouts.children().hide();
 		
-		// Set up variable to contain our layout input value
-		var column_layout = $( 'input:radio[name=column-layout]:checked' ).val();
- 
-		// Set up output variable
-		var output = '';
+					if ( $(this).val() == 'two-columns' ) {
+						layouts.children( '.two-columns' ).show();
+					} else if ( $(this).val() == 'three-columns' ) {
+						layouts.children( '.three-columns' ).show();
+					} else if ( $(this).val() == 'four-columns' ) {
+						layouts.children( '.four-columns' ).show();
+					} else if ( $(this).val() == 'five-columns' ) {
+						layouts.children( '.five-columns' ).show();
+					} else if ( $(this).val() == 'six-columns' ) {
+						layouts.children( '.six-columns' ).show();
+					} 
+				}
+			});
+			
+			// Toggle the layout titles
+			inputs.toggleTitles.click( function( event ) {
+				event.preventDefault();
+				
+				$( '.layout-title' ).toggleClass( 'show-title' );
+				$(this).toggleClass( 'show-title' );
+
+				if ( $(this).hasClass( 'show-title' ) ) {
+					$(this).text( gca_localize_scripts.hide_titles );
+				} else {
+					$(this).text( gca_localize_scripts.show_titles );
+				}
+			});
+			
+			// Generates colored border on selected layout and adds classes
+			inputs.layoutSelect.click( function( event ) {
+				event.preventDefault();
+				
+				// Remove selected class from all, then add to the selected layout
+				$( '.gca-column-layouts label.layout' ).removeClass( 'selected' );
+				$( event.target ).parent( 'label.layout' ).addClass( 'selected' );
+				
+				// Get all the classes from the selected layout
+				var selectedColumnType = $( event.target ).parent( 'label.layout' ).prop( 'class' );
+				
+				// Reset the class on the gca-column-classes div and add the selected column layout class
+				$( '.gca-column-classes' ).prop( 'class', 'gca-column-classes' );
+				$( '.gca-column-classes' ).addClass( selectedColumnType ).removeClass( 'layout selected' );
+			});
+			
+			// Make sure custom classes are actually custom classes
+			inputs.classes.change( function() {
+				var input = $(this).val();
+				input = input.replace(/[^\w\-\s]/g, ''); // remove all characters that are not allowed
+				input = input.replace(/\s\s+/g, ' '); // trim all excess whitepace
+				$(this).val( input );
+			});
+		},
 		
-		var first_column  = ( selectedContent != '' ? selectedContent : gca_localize_scripts.first_column );
-		var second_column = gca_localize_scripts.second_column;
-		var third_column  = gca_localize_scripts.third_column;
-		var fourth_column = gca_localize_scripts.fourth_column;
-		var fifth_column  = gca_localize_scripts.fifth_column;
-		var sixth_column  = gca_localize_scripts.sixth_column;
-
-		switch ( column_layout ) {
-
-			// Output for general column configurations	
-			case 'two-column':
-				output += '[one-half-first]' + first_column + '[/one-half-first]<br>[one-half]' + second_column + '[/one-half]';
-				break;
-			case 'three-column':	
-				output += '[one-third-first]' + first_column + '[/one-third-first]<br>[one-third]' + second_column + '[/one-third]<br>[one-third]' + third_column + '[/one-third]';
-				break;
-			case 'four-column':
-				output += '[one-fourth-first]' + first_column + '[/one-fourth-first]<br>[one-fourth]' + second_column + '[/one-fourth]<br>[one-fourth]' + third_column + '[/one-fourth]<br>[one-fourth]' + fourth_column + '[/one-fourth]';
-				break;
-			case 'six-column':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[one-sixth]' + third_column + '[/one-sixth]<br>[one-sixth]' + fourth_column + '[/one-sixth]<br>[one-sixth]' + fifth_column + '[/one-sixth]<br>[one-sixth]' + sixth_column + '[/one-sixth]';
-				break;
-
-			// Output for advanced Two-Column configurations
-			case 'twothirds-onethird':
-				output += '[two-thirds-first]' + first_column + '[/two-thirds-first]<br>[one-third]' + second_column + '[/one-third]';
-				break;
-			case 'onethird-twothirds':
-				output += '[one-third-first]' + first_column + '[/one-third-first]<br>[two-thirds]' + second_column + '[/two-thirds]';
-				break;
-			case 'onefourth-threefourths':
-				output += '[one-fourth-first]' + first_column + '[/one-fourth-first]<br>[three-fourths]' + second_column + '[/three-fourths]';
-				break;
-			case 'threefourths-onefourth':
-				output += '[three-fourths-first]' + first_column + '[/three-fourths-first]<br>[one-fourth]' + second_column + '[/one-fourth]';
-				break;
-			case 'onesixth-fivesixths':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[five-sixths]' + second_column + '[/five-sixths]';
-				break;
-			case 'fivesixths-onesixth':
-				output += '[five-sixths-first]' + first_column + '[/five-sixths-first]<br>[one-sixth]' + second_column + '[/one-sixth]';
-				break;
-
-			// Output for advanced Three-Column configurations
-			case 'onefourth-onefourth-half':
-				output += '[one-fourth-first]' + first_column + '[/one-fourth-first]<br>[one-fourth]' + second_column + '[/one-fourth]<br>[two-fourths]' + third_column + '[/two-fourths]';
-				break;
-			case 'half-onefourth-onefourth':
-				output += '[two-fourths-first]' + first_column + '[/two-fourths-first]<br>[one-fourth]' + second_column + '[/one-fourth]<br>[one-fourth]' + third_column + '[/one-fourth]';
-				break;
-			case 'onefourth-half-onefourth':
-				output += '[one-fourth-first]' + first_column + '[/one-fourth-first]<br>[two-fourths]' + second_column + '[/two-fourths]<br>[one-fourth]' + third_column + '[/one-fourth]';
-				break;
-			case 'onesixth-onesixth-foursixths':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[four-sixths]' + third_column + '[/four-sixths]';
-				break;
-			case 'foursixths-onesixth-onesixth':
-				output += '[four-sixths-first]' + first_column + '[/four-sixths-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[one-sixth]' + third_column + '[/one-sixth]';
-				break;
-			case 'onesixth-foursixths-onesixth':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[four-sixths]' + second_column + '[/four-sixths]<br>[one-sixth]' + third_column + '[/one-sixth]';
-				break;
-			case 'onesixth-twosixths-threesixths':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[two-sixths]' + second_column + '[/two-sixths]<br>[three-sixths]' + third_column + '[/three-sixths]';
-				break;
-			case 'threesixths-twosixths-onesixth':
-				output += '[three-sixths-first]' + first_column + '[/three-sixths-first]<br>[two-sixths]' + second_column + '[/two-sixths]<br>[one-sixth]' + third_column + '[/one-sixth]';
-				break;
-			case 'twosixths-onesixth-threesixths':
-				output += '[two-sixths-first]' + first_column + '[/two-sixths-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[three-sixths]' + third_column + '[/three-sixths]';
-				break;
-			case 'threesixths-onesixth-twosixths':
-				output += '[three-sixths-first]' + first_column + '[/three-sixths-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[two-sixths]' + third_column + '[/two-sixths]';
-				break;
-			case 'onesixth-threesixths-twosixths':
-				output += '[one-sixths-first]' + first_column + '[/one-sixths-first]<br>[three-sixth]' + second_column + '[/three-sixth]<br>[two-sixths]' + third_column + '[/two-sixths]';
-				break;
-			case 'twosixths-onesixth-onesixth':
-				output += '[two-sixths-first]' + first_column + '[/two-sixths-first]<br>[three-sixth]' + second_column + '[/three-sixth]<br>[one-sixths]' + third_column + '[/one-sixths]';
-				break;
-
-			// Output for advanced Four-Column configurations		
-			case 'onesixth-onesixth-onesixth-threesixths':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[one-sixth]' + third_column + '[/one-sixth]<br>[three-sixths]' + fourth_column + '[/three-sixths]';
-				break;
-			case 'threesixths-onesixth-onesixth-onesixth':
-				output += '[three-sixths-first]' + first_column + '[/three-sixths-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[one-sixth]' + third_column + '[/one-sixth]<br>[one-sixth]' + fourth_column + '[/one-sixth]';
-				break;
-			case 'onesixth-threesixths-onesixth-onesixth':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[three-sixths]' + second_column + '[/three-sixths]<br>[one-sixth]' + third_column + '[/one-sixth]<br>[one-sixth]' + fourth_column + '[/one-sixth]';
-				break;
-			case 'onesixth-onesixth-threesixths-onesixth':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[three-sixths]' + third_column + '[/three-sixths]<br>[one-sixth]' + fourth_column + '[/one-sixth]';
-				break;
-			case 'onesixth-onesixth-twosixths-twosixths':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[two-sixths]' + third_column + '[/two-sixths]<br>[two-sixths]' + fourth_column + '[/two-sixths]';
-				break;
-			case 'twosixths-twosixths-onesixth-onesixth':
-				output += '[two-sixths-first]' + first_column + '[/two-sixths-first]<br>[two-sixths]' + second_column + '[/two-sixths]<br>[one-sixth]' + third_column + '[/one-sixth]<br>[one-sixth]' + fourth_column + '[/one-sixth]';
-				break;
-			case 'onesixth-twosixths-onesixth-twosixths':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[two-sixths]' + second_column + '[/two-sixths]<br>[one-sixth]' + third_column + '[/one-sixth]<br>[two-sixths]' + fourth_column + '[/two-sixths]';
-				break;	
-			case 'twosixths-onesixth-twosixths-onesixth':
-				output += '[two-sixths-first]' + first_column + '[/two-sixths-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[two-sixths]' + third_column + '[/two-sixths]<br>[one-sixth]' + fourth_column + '[/one-sixth]';
-				break;	
-			case 'onesixth-twosixths-twosixths-onesixth':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[two-sixths]' + second_column + '[/two-sixths]<br>[two-sixths]' + third_column + '[/two-sixths]<br>[one-sixth]' + fourth_column + '[/one-sixth]';
-				break;
-			case 'twosixths-onesixth-onesixth-twosixths':
-				output += '[two-sixths-first]' + first_column + '[/two-sixths-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[one-sixth]' + third_column + '[/one-sixth]<br>[two-sixths]' + fourth_column + '[/two-sixths]';
-				break;
-
-			// Output for advanced Five-Column configurations
-			case 'onesixth-onesixth-onesixth-onesixth-twosixths':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[one-sixth]' + third_column + '[/one-sixth]<br>[one-sixth]' + fourth_column + '[/one-sixth]<br>[two-sixths]' + fifth_column + '[/two-sixths]';
-				break;
-			case 'onesixth-onesixth-onesixth-twosixths-onesixth':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[one-sixth]' + third_column + '[/one-sixth]<br>[two-sixths]' + fourth_column + '[/two-sixths]<br>[one-sixth]' + fifth_column + '[/one-sixth]';
-				break;
-			case 'onesixth-onesixth-twosixths-onesixth-onesixth':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[two-sixths]' + third_column + '[/two-sixths]<br>[one-sixth]' + fourth_column + '[/one-sixth]<br>[one-sixth]' + fifth_column + '[/one-sixth]';
-				break;
-			case 'onesixth-twosixths-onesixth-onesixth-onesixth':
-				output += '[one-sixth-first]' + first_column + '[/one-sixth-first]<br>[two-sixths]' + second_column + '[/two-sixths]<br>[one-sixth]' + third_column + '[/one-sixth]<br>[one-sixth]' + fourth_column + '[/one-sixth]<br>[one-sixth]' + fifth_column + '[/one-sixth]';
-				break;
-			case 'twosixths-onesixth-onesixth-onesixth-onesixth':
-				output += '[two-sixths-first]' + first_column + '[/two-sixths-first]<br>[one-sixth]' + second_column + '[/one-sixth]<br>[one-sixth]' + third_column + '[/one-sixth]<br>[one-sixth]' + fourth_column + '[/one-sixth]<br>[one-sixth]' + fifth_column + '[/one-sixth]';
-				break;
-
-			default:
-				output += 'error';
+		open: function( editorId ) {
+			
+			// Use the builtin WP class that prevents background from scrolling when modal is open
+			$( document.body ).addClass( 'modal-open' );
 		
-		} //end switch
+			if ( editorId ) {
+				window.gcaActiveEditor = editorId;
+			}
+
+			if ( ! window.gcaActiveEditor ) {
+				return;
+			}
+			
+			if ( typeof window.tinymce !== 'undefined' ) {
+				// Make sure the link wrapper is the last element in the body,
+				// or the inline editor toolbar may show above the backdrop.
+				$( document.body ).append( inputs.backdrop, inputs.wrap );
+				
+				editor = window.tinymce.get( window.gcaActiveEditor );
+				
+				if ( editor ) {
+					selected = editor.selection.getContent();
 		
-		// If a layout has been selected, do stuff 
-		if ( output != 'error' ) {
-			// Insert the column selection into tinymce
-			top.tinymce.activeEditor.windowManager.getParams().onInsert( output );
-	
-			// Close the window once we have added the output to tinymce
-			top.tinymce.activeEditor.windowManager.close();
-		}
-	});	
-
-
-	// Close the popup if the cancel button is clicked
-	$( document ).on( 'click', '#gca_cancel', function() {
-		top.tinymce.activeEditor.windowManager.close();	
-	});
-	
-	
-	// Generates colored border on selected layout
-	$( document ).on( 'click', ".gca-column-layouts input[type='radio']", function() {
-		$( '.gca-column-layouts label.layout' ).removeClass( 'selected' );
-		$( event.target ).parent( 'label.layout' ).addClass( 'selected' );
-	});
-	
-	
-	// Toggle different column layouts
-	$(document).on( 'change', '#gca_column_select', function(){
-	
-		var layouts = $(this).parent().siblings( '.gca-column-layouts' );
-	
-		if ( $(this).val() == 'all' ) {
-			layouts.children().show();
-		} else {
-			layouts.children().hide();
+					inputs.wrap.show();
+					inputs.backdrop.show();
+				}
+			}
+		},
 		
-			if ( $(this).val() == 'two-columns' ) {
-				layouts.children( '.two-columns' ).show();
-			} else if ( $(this).val() == 'three-columns' ) {
-				layouts.children( '.three-columns' ).show();
-			} else if ( $(this).val() == 'four-columns' ) {
-				layouts.children( '.four-columns' ).show();
-			} else if ( $(this).val() == 'five-columns' ) {
-				layouts.children( '.five-columns' ).show();
-			} else if ( $(this).val() == 'six-columns' ) {
-				layouts.children( '.six-columns' ).show();
-			} 
-		}
-	});
-
-
-	// Toggle the layout titles
-	$( document ).on( 'click', "#gca_toggle_titles", function() {
-		$( '.layout-title' ).toggleClass( 'show-title' );
-		$(this).toggleClass( 'show-title' );
+		insert: function() {
 		
-		if ( $(this).hasClass( 'show-title' ) ) {
-			$(this).text( gca_localize_scripts.hide_titles );
-		} else {
-			$(this).text( gca_localize_scripts.show_titles );
-		}
-	});
+			var columns, columnIndex, classes, classIndex, text,
+				first = '', 
+				lineBreak = '';
+				
+			// Reset output
+			output = '';
+			
+			// Get the selected column layout
+			layout = $( 'input:radio[name=gca-column-layout]:checked' ).val();
+			
+			if ( layout != null ) {
+					
+				// Form the column classes array from the values provided
+				classes = [ 
+					$( '#gca_column_one_class' ).val(),
+					$( '#gca_column_two_class' ).val(),
+					$( '#gca_column_three_class' ).val(),
+					$( '#gca_column_four_class' ).val(),
+					$( '#gca_column_five_class' ).val(),
+					$( '#gca_column_six_class' ).val(),
+				];
+			
+				classIndex = 0;
+			
+				for ( classIndex = 0; classIndex < classes.length; ++classIndex ) {
+					classes[classIndex] = ( classes[classIndex] != '' ? ( ' class="' + classes[classIndex] + '"' ) : '' );
+				}
+			
+				// Form the column text array
+				text = [ firstColumnText, secondColumnText, thirdColumnText, fourthColumnText, fifthColumnText, sixthColumnText ];
+				
+				// If content was highlighted, use that for the first column's text over default content
+				text[0] = ( selected != '' ? selected : text[0] );
+				
+				// Form the column layout array
+				columns = layout.split('_'),
+					
+				columnIndex = 0;
+			
+				for ( columnIndex = 0; columnIndex < columns.length; ++columnIndex ) {
+				
+					first = columnIndex == 0 ? '-first' : '';
+					lineBreak = columnIndex < ( columns.length - 1 ) ? '<br>' : '';
+				
+					output += '[' + columns[columnIndex] + first + classes[columnIndex] + ']' + text[columnIndex] + '[/' + columns[columnIndex] + first + ']' + lineBreak;
+				}
+				
+				// Insert shortcodes and close popup
+				editor.insertContent( output );
+				gca_popup.close();
 
+			} else {
+			
+				// Throw alert if no layout was selected
+				alert( missingLayout );
+			}
+		},
+		
+		reset: function() {
+			
+			// Deselect any selected column layout
+			inputs.layoutSelect.parent().removeClass( 'selected' );
+			inputs.layoutSelect.prop( 'checked', false );
+			
+			// Reset the class on the gca-column-classes div
+			$( '.gca-column-classes' ).prop( 'class', 'gca-column-classes' );
+			
+			// Clear all classes
+			$( '.gca-column-classes input' ).val( '' );
+		},
+		
+		close: function() {
+			
+			$( document.body ).removeClass( 'modal-open' );
+			
+			inputs.wrap.hide();
+			inputs.backdrop.hide();
+		} 
+	}
 	
-});
+	$( document ).ready( gca_popup.init );
+	
+})( jQuery );
