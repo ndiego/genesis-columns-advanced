@@ -1,29 +1,45 @@
-/*
- * Add our columns shortcode Tinymce button
- */
+// Add the columns shortcode TinyMCE button
 (function() {
 
 	// Make sure tinymce is running
 	if ( typeof tinymce != 'undefined' ) {
 		
-		tinymce.PluginManager.add( 'gca_button', function( editor, url ) {
-		
-			//var selectedContent = ( editor.selection.getContent() != '' ? editor.selection.getContent() : '' );
-	
-			editor.addButton( 'gca_button', {
+		tinymce.PluginManager.add( 'gca_plugin', function( editor, url ) {
+			
+			// Get all the text translations
+			var insert		  	 = editor.getLang( 'gca_translations.insert' )
+				twoColumns	 	 = editor.getLang( 'gca_translations.two_columns' ),
+				threeColumns 	 = editor.getLang( 'gca_translations.three_columns' ),
+				fourColumns	  	 = editor.getLang( 'gca_translations.four_columns' ),
+				sixColumns	 	 = editor.getLang( 'gca_translations.six_columns' ),
+				advancedLayouts	 = editor.getLang( 'gca_translations.advanced_layouts' ),
+				utilities	 	 = editor.getLang( 'gca_translations.utilities' ),
+				clearfix	 	 = editor.getLang( 'gca_translations.clearfix' ),
+				verticalSpacer	 = editor.getLang( 'gca_translations.vertical_spacer' ),
+				columnsContainer = editor.getLang( 'gca_translations.columns_container' ),
+				firstColumn  	 = editor.getLang( 'gca_translations.first_column' ),
+				secondColumn 	 = editor.getLang( 'gca_translations.second_column' ),
+				thirdColumn  	 = editor.getLang( 'gca_translations.third_column' ),
+				fourthColumn 	 = editor.getLang( 'gca_translations.fourth_column' ),
+				fifthColumn  	 = editor.getLang( 'gca_translations.fifth_column' ),
+				sixthColumn  	 = editor.getLang( 'gca_translations.sixth_column' );
+				containerText    = editor.getLang( 'gca_translations.container_text' );
+			
+			// Render the columns plugin button
+			editor.addButton( 'gca_plugin', {
 				type: 'menubutton',
-				title: 'Insert Columns',
+				title: insert,
 				image: url + '/../images/icon.png',
 				menu: [
-					{ text: '2 Columns', onclick: function() { editor.insertContent( '[one-half-first]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : 'Place your content for the first column here.' ) + '[/one-half-first]<br>[one-half]Place your content for the second column here.[/one-half]<br>' ); }},
-					{ text: '3 Columns', onclick: function() { editor.insertContent( '[one-third-first]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : 'Place your content for the first column here.' ) + '[/one-third-first]<br>[one-third]Place your content for the second column here.[/one-third]<br>[one-third]Place your content for the third column here.[/one-third]<br>' ); }},
-					{ text: '4 Columns', onclick: function() { editor.insertContent( '[one-fourth-first]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : 'Place your content for the first column here.' ) + '[/one-fourth-first]<br>[one-fourth]Place your content for the second column here.[/one-fourth]<br>[one-fourth]Place your content for the third column here.[/one-fourth]<br>[one-fourth]Place your content for the fourth column here.[/one-fourth]<br>' ); }},
-					{ text: '6 Columns', onclick: function() { editor.insertContent( '[one-sixth-first]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : 'Place your content for the first column here.' ) + '[/one-sixth-first]<br>[one-sixth]Place your content for the second column here.[/one-sixth]<br>[one-sixth]Place your content for the third column here.[/one-sixth]<br>[one-sixth]Place your content for the fourth column here.[/one-sixth]<br>[one-sixth]Place your content for the fifth column here.[/one-sixth]<br>[one-sixth]Place your content for the sixth column here.[/one-sixth]<br>'); }},
-					{ text: 'Advanced Layouts', onclick: function() { window.gca_popup.open( editor.id ) } },
-					{ text: 'Utilities', menu: [
-						{ text: 'Clearfix', onclick: function() { editor.insertContent( '[clearfix]' ); } },
-						{ text: 'Vertical Spacer', onclick: function() { editor.insertContent( '[vertical-spacer]' ); } },
-						{ text: 'Columns Container', onclick: function() { editor.insertContent( '[columns-container]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : 'Place your columns in this container.' ) + '[/columns-container]' ); } },
+					{ text: twoColumns, onclick: function() { editor.insertContent( '[one-half-first]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : firstColumn ) + '[/one-half-first]<br>[one-half]' + secondColumn + '[/one-half]<br>' ); }},
+					{ text: threeColumns, onclick: function() { editor.insertContent( '[one-third-first]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : firstColumn ) + '[/one-third-first]<br>[one-third]' + secondColumn + '[/one-third]<br>[one-third]' + thirdColumn + '[/one-third]<br>' ); }},
+					{ text: fourColumns, onclick: function() { editor.insertContent( '[one-fourth-first]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : firstColumn ) + '[/one-fourth-first]<br>[one-fourth]' + secondColumn + '[/one-fourth]<br>[one-fourth]' + thirdColumn + '[/one-fourth]<br>[one-fourth]' + fourthColumn + '[/one-fourth]<br>' ); }},
+					{ text: sixColumns, onclick: function() { editor.insertContent( '[one-sixth-first]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : firstColumn ) + '[/one-sixth-first]<br>[one-sixth]' + secondColumn + '[/one-sixth]<br>[one-sixth]' + thirdColumn + '[/one-sixth]<br>[one-sixth]' + fourthColumn + '[/one-sixth]<br>[one-sixth]' + fifthColumn + '[/one-sixth]<br>[one-sixth]' + sixthColumn + '[/one-sixth]<br>'); }},
+					{ text: advancedLayouts, onclick: function() { window.gca_popup.open( editor.id ) } },
+					{ text: utilities, menu: [
+						{ text: clearfix, onclick: function() { editor.insertContent( '[clearfix]' ); } },
+						{ text: verticalSpacer, onclick: function() { editor.insertContent( '[vertical-spacer]' ); } },
+						{ text: columnsContainer, onclick: function() { editor.insertContent( '[columns-container class=""]' + ( editor.selection.getContent() != '' ? editor.selection.getContent() : containerText ) + '[/columns-container]' ); } },
 					]}
 				]
 			});

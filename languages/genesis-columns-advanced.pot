@@ -1,0 +1,192 @@
+# Copyright (C) 2016 Genesis Columns Advanced
+# This file is distributed under the same license as the Genesis Columns Advanced package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Genesis Columns Advanced 2.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/genesis-columns-advanced\n"
+"POT-Creation-Date: 2016-06-01 13:20:10+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: genesis-columns-advanced.php:153 tinymce/plugin-translations.php:32
+msgid "Place your content for the first column here."
+msgstr ""
+
+#: genesis-columns-advanced.php:154 tinymce/plugin-translations.php:33
+msgid "Place your content for the second column here."
+msgstr ""
+
+#: genesis-columns-advanced.php:155 tinymce/plugin-translations.php:34
+msgid "Place your content for the third column here."
+msgstr ""
+
+#: genesis-columns-advanced.php:156 tinymce/plugin-translations.php:35
+msgid "Place your content for the fourth column here."
+msgstr ""
+
+#: genesis-columns-advanced.php:157 tinymce/plugin-translations.php:36
+msgid "Place your content for the fifth column here."
+msgstr ""
+
+#: genesis-columns-advanced.php:158 tinymce/plugin-translations.php:37
+msgid "Place your content for the sixth column here."
+msgstr ""
+
+#: genesis-columns-advanced.php:159
+msgid "You forgot to select a column layout!"
+msgstr ""
+
+#: genesis-columns-advanced.php:160 tinymce/popup.php:91
+msgid "Show Titles"
+msgstr ""
+
+#: genesis-columns-advanced.php:161
+msgid "Hide Titles"
+msgstr ""
+
+#: genesis-columns-advanced.php:210
+msgid "Documentation"
+msgstr ""
+
+#: tinymce/plugin-translations.php:22
+msgid "Insert Columns"
+msgstr ""
+
+#: tinymce/plugin-translations.php:23
+msgid "2 Columns"
+msgstr ""
+
+#: tinymce/plugin-translations.php:24
+msgid "3 Columns"
+msgstr ""
+
+#: tinymce/plugin-translations.php:25
+msgid "4 Columns"
+msgstr ""
+
+#: tinymce/plugin-translations.php:26
+msgid "6 Columns"
+msgstr ""
+
+#: tinymce/plugin-translations.php:27
+msgid "Advanced Layouts"
+msgstr ""
+
+#: tinymce/plugin-translations.php:28
+msgid "Utilities"
+msgstr ""
+
+#: tinymce/plugin-translations.php:29
+msgid "Clearfix"
+msgstr ""
+
+#: tinymce/plugin-translations.php:30
+msgid "Vertical Spacer"
+msgstr ""
+
+#: tinymce/plugin-translations.php:31
+msgid "Columns Container"
+msgstr ""
+
+#: tinymce/plugin-translations.php:38
+msgid "Place your columns in this container."
+msgstr ""
+
+#: tinymce/popup.php:9 tinymce/popup.php:82
+msgid "Two Columns"
+msgstr ""
+
+#: tinymce/popup.php:21 tinymce/popup.php:83
+msgid "Three Columns"
+msgstr ""
+
+#: tinymce/popup.php:39 tinymce/popup.php:84
+msgid "Four Columns"
+msgstr ""
+
+#: tinymce/popup.php:55 tinymce/popup.php:85
+msgid "Five Columns"
+msgstr ""
+
+#: tinymce/popup.php:65 tinymce/popup.php:86
+msgid "Six Columns"
+msgstr ""
+
+#: tinymce/popup.php:75
+msgid "Advanced Column Layouts"
+msgstr ""
+
+#: tinymce/popup.php:76
+msgid "Close"
+msgstr ""
+
+#: tinymce/popup.php:81
+msgid "All Layouts"
+msgstr ""
+
+#: tinymce/popup.php:89
+msgid "Filter by the number of columns."
+msgstr ""
+
+#: tinymce/popup.php:110
+msgid "Optionally add custom CSS classes to each column. Multiple classes must be space separated."
+msgstr ""
+
+#: tinymce/popup.php:115
+msgid "Column One"
+msgstr ""
+
+#: tinymce/popup.php:116
+msgid "Column Two"
+msgstr ""
+
+#: tinymce/popup.php:117
+msgid "Column Three"
+msgstr ""
+
+#: tinymce/popup.php:118
+msgid "Column Four"
+msgstr ""
+
+#: tinymce/popup.php:119
+msgid "Column Five"
+msgstr ""
+
+#: tinymce/popup.php:120
+msgid "Column Six"
+msgstr ""
+
+#: tinymce/popup.php:132
+msgid "Cancel"
+msgstr ""
+
+#: tinymce/popup.php:135
+msgid "Reset"
+msgstr ""
+
+#: tinymce/popup.php:138
+msgid "Insert Selected Layout"
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "Genesis Columns Advanced"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.nickdiego.com/genesis-columns-advanced"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Generates shortcodes for all 37 possible column layouts when using Genesis column classes."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Nick Diego"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.nickdiego.com"
+msgstr ""

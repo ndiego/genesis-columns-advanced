@@ -1,9 +1,9 @@
-
+// All of the js needed to run the advanced layouts TinyMCE popup
 var gca_popup;
 
 ( function($) { 
 
-	var editor, selected, layout, firstColumnClass, secondColumnClass, thirdColumnClass, fourthColumnClass, fifthColumnClass, sixthColumnClass, output, 
+	var editor, selected, layout, output, 
 		inputs = {},
 		firstColumnText   = gca_localize_scripts.first_column,
 		secondColumnText  = gca_localize_scripts.second_column,
@@ -11,7 +11,9 @@ var gca_popup;
 		fourthColumnText  = gca_localize_scripts.fourth_column,
 		fifthColumnText   = gca_localize_scripts.fifth_column,
 		sixthColumnText   = gca_localize_scripts.sixth_column,
-		missingLayout     = gca_localize_scripts.missing_layout;
+		missingLayout     = gca_localize_scripts.missing_layout,
+		hideTitles		  = gca_localize_scripts.hide_titles,
+		showTitles		  = gca_localize_scripts.show_titles;
 
 	gca_popup = {
 	
@@ -76,9 +78,9 @@ var gca_popup;
 				$(this).toggleClass( 'show-title' );
 
 				if ( $(this).hasClass( 'show-title' ) ) {
-					$(this).text( gca_localize_scripts.hide_titles );
+					$(this).text( hideTitles );
 				} else {
-					$(this).text( gca_localize_scripts.show_titles );
+					$(this).text( showTitles );
 				}
 			});
 			
@@ -140,14 +142,13 @@ var gca_popup;
 		
 			var columns, columnIndex, classes, classIndex, text,
 				first = '', 
-				lineBreak = '';
 				
 			// Reset output
 			output = '';
 			
 			// Get the selected column layout
-			layout = $( 'input:radio[name=gca-column-layout]:checked' ).val();
-			
+			layout = $( '.gca-column-layouts label.selected input' ).val();
+
 			if ( layout != null ) {
 					
 				// Form the column classes array from the values provided
@@ -180,9 +181,8 @@ var gca_popup;
 				for ( columnIndex = 0; columnIndex < columns.length; ++columnIndex ) {
 				
 					first = columnIndex == 0 ? '-first' : '';
-					lineBreak = columnIndex < ( columns.length - 1 ) ? '<br>' : '';
 				
-					output += '[' + columns[columnIndex] + first + classes[columnIndex] + ']' + text[columnIndex] + '[/' + columns[columnIndex] + first + ']' + lineBreak;
+					output += '[' + columns[columnIndex] + first + classes[columnIndex] + ']' + text[columnIndex] + '[/' + columns[columnIndex] + first + ']<br>';
 				}
 				
 				// Insert shortcodes and close popup

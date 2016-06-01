@@ -2,8 +2,9 @@
 
 defined( 'WPINC' ) or die;
 
+
 // Array of all available columns layouts
-$all_layouts = array( 
+$gca_all_layouts = array( 
 	'two-columns' => array(
 		'title' => __( 'Two Columns', 'genesis-columns-advanced' ),
 		'layouts' => array(
@@ -22,7 +23,7 @@ $all_layouts = array(
 			'one-third_one-third_one-third' => array ( 'title' => '1/3 - 1/3 - 1/3', 'image' => 'tinymce/images/layouts/thirds.png' ),
 			'one-fourth_one-fourth_two-fourths' => array ( 'title' => '1/4 - 1/4 - 2/4', 'image' => 'tinymce/images/layouts/fourth_fourth_half.png' ),
 			'two-fourths_one-fourth_one-fourth' => array ( 'title' => '2/4 - 1/4 - 1/4', 'image' => 'tinymce/images/layouts/half_fourth_fourth.png' ),
-			'one-fourth_two-fourths_onefourth' => array ( 'title' => '1/4 - 2/4 - 1/4', 'image' => 'tinymce/images/layouts/fourth_half_fourth.png' ),
+			'one-fourth_two-fourths_one-fourth' => array ( 'title' => '1/4 - 2/4 - 1/4', 'image' => 'tinymce/images/layouts/fourth_half_fourth.png' ),
 			'one-sixth_one-sixth_four-sixths' => array ( 'title' => '1/6 - 1/6 - 4/6', 'image' => 'tinymce/images/layouts/sixth_sixth_foursixths.png' ),
 			'four-sixths_one-sixth_one-sixth' => array ( 'title' => '4/6 - 1/6 - 1/6', 'image' => 'tinymce/images/layouts/foursixths_sixth_sixth.png' ),
 			'one-sixth_four-sixths_one-sixth' => array ( 'title' => '1/6 - 4/6 - 1/6', 'image' => 'tinymce/images/layouts/sixth_foursixths_sixth.png' ),
@@ -67,7 +68,6 @@ $all_layouts = array(
 		)
 	),
 );
-
 ?>
 <div id="gca_popup_backdrop" style="display: none"></div>
 <div id="gca_popup_wrap" style="display: none" role="dialog" aria-labelledby="">
@@ -93,7 +93,7 @@ $all_layouts = array(
 			</div>
 			<div class="gca-column-layouts">
 				<?php
-				foreach ( $all_layouts as $column_type => $column_data ) {
+				foreach ( $gca_all_layouts as $column_type => $column_data ) {
 					foreach ( $column_data['layouts'] as $layout_id => $layout_data ) {
 						echo '<label title="' . $layout_data['title'] . '" class="layout ' . $column_type . '">';
 						echo '<img src="' . plugins_url( $layout_data['image'], dirname( __FILE__ ) ) . '" alt="' . $layout_data['title'] . '" title="' . $layout_data['title'] . '"><br>';

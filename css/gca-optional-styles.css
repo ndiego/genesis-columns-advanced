@@ -1,8 +1,4 @@
-/* An optional CSS file that is loaded for those not running the Genesis Framework
-
-/* Column Classes
---------------------------------------------- */
-/* Link: http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css */
+/* An optional column CSS file that is loaded when the Genesis Framework is not active */
 
 .five-sixths,
 .four-sixths,
@@ -56,7 +52,6 @@
 	margin-left: 0;
 }
 
-
 @media only screen and (max-width: 800px) {
 
 	.five-sixths,
@@ -75,7 +70,6 @@
 	}
 	
 }
-
 
 /* Utility Classes
 --------------------------------------------- */
