@@ -9,7 +9,7 @@ defined( 'WPINC' ) or die;
  */
 function gca_strip_autop( $content ){
 	$content = do_shortcode( shortcode_unautop( $content ) );
-	$content = preg_replace( '#^<\/p>|^<br \/>|<p>$#', '', $content );
+	$content = preg_replace( '#^<\/p>|<p>$#', '', $content );
 	return $content;
 }
 
