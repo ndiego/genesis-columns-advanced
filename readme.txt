@@ -3,7 +3,7 @@ Contributors: ndiego, outermostdesign
 Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D2LLR72CD82JJ
 Tags: columns, shortcode, genesis, Genesis Framework, genesiswp, TinyMCE, admin
 Requires at least: 3.6
-Tested up to: 4.4.2
+Tested up to: 4.5
 Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -23,7 +23,8 @@ https://youtu.be/ortnpInn_YE
 * Add custom CSS classes to any column
 * Includes three utility shortcodes to assist with layout, see the FAQ for more info
 * Only adds one button to your Wordpress editor
-* Custom button design integrates seamlessly with the core Wordpress aesthetic
+* No plugin settings to configure
+* Custom button and TinyMCE popup design integrates seamlessly with the core Wordpress aesthetic
 * Developed for Genesis Framework users but usable by all! (See note on Installation page)
 
 If you have questions or would like to request additional features, such as additional utility shortcodes, please let me know in the plugin support forum.
