@@ -8,8 +8,8 @@ defined( 'WPINC' ) or die;
  * Courtesy of Mathew Smith (Genesis Easy Columns)
  */
 function gca_strip_autop( $content ){
+	$content = preg_replace( '#^<\/p>|^<br \/>|<p>$#', '', $content );
 	$content = do_shortcode( shortcode_unautop( $content ) );
-	$content = preg_replace( '#^<\/p>|<p>$#', '', $content );
 	return $content;
 }
 
