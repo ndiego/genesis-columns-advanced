@@ -23,6 +23,7 @@ function gca_translations() {
         'two_columns' 		=> __( '2 Columns', 'genesis-columns-advanced' ),
         'three_columns' 	=> __( '3 Columns', 'genesis-columns-advanced' ),
         'four_columns' 		=> __( '4 Columns', 'genesis-columns-advanced' ),
+        'five_columns' 		=> __( '5 Columns', 'genesis-columns-advanced' ),
         'six_columns' 		=> __( '6 Columns', 'genesis-columns-advanced' ),
         'advanced_layouts'  => __( 'Advanced Layouts', 'genesis-columns-advanced' ),
         'utilities'  		=> __( 'Utilities', 'genesis-columns-advanced' ),
