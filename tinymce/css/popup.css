@@ -1,101 +1,151 @@
-/* Styling for the Advanced Layouts TinyMCE popup - Genesis Columns Advanced */
+/* # Styling for the Advanced Layouts TinyMCE popup
+
+Plugin: Genesis Columns Advanced
+Author: Nick Diego
+Link: http://www.nickdiego.com/plugins/genesis-columns-advanced
+*/
+
+
+/* # General Popup Styling
+---------------------------------------------------------------------------------------------------- */
+
+/* ## Popup Backdrop + Containers
+-------------------------------------------------------------- */
 
 #gca_popup_backdrop {
+	background: #000;
 	display: none;
+	min-height: 360px;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	min-height: 360px;
-	background: #000;
-	opacity: 0.7;
-	filter: alpha(opacity=70);
 	z-index: 100100;
 }
 
 #gca_popup_wrap {
-	display: none;
 	background-color: #fff;
 	-webkit-box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
 	box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
-	width: 640px;
-	margin-left: -320px;
-	height: 530px;
+	display: none;
     margin-top: -265px;
+	margin-left: -320px;
 	overflow: hidden;
 	position: fixed;
 	top: 50%;
 	left: 50%;
-	z-index: 100105;
 	-webkit-transition: height 0.2s, margin-top 0.2s;
 	transition: height 0.2s, margin-top 0.2s;
+	width: 640px;
+	height: 530px;
+	z-index: 100105;
 }
+
+#gca_popup_form {
+	max-height: 100%;
+	overflow: auto;
+}
+
+#gca_popup_content_wrap {
+	margin-top: 36px;
+	padding: 16px 16px 55px;
+}
+
+
+/* ## Popup Title/Close
+-------------------------------------------------------------- */
 
 #gca_popup_title {
 	background: #fcfcfc;
 	border-bottom: 1px solid #ddd;
-	height: 36px;
 	font-size: 18px;
 	font-weight: 600;
+	height: 36px;
+    left: 0;
+    right: 0;
 	line-height: 36px;
 	margin: 0;
 	padding: 0 36px 0 16px;
 	position: absolute;
-    left: 0;
-    right: 0;
 }
 
 #gca_popup_close {
+	background: none;
+	border: none;
 	color: #666;
+	cursor: pointer;
 	padding: 0;
 	position: absolute;
+	text-align: center;
 	top: 0;
 	right: 0;
 	width: 36px;
 	height: 36px;
-	text-align: center;
-	background: none;
-	border: none;
-	cursor: pointer;
 }
 
 #gca_popup_close:before {
+	content: "\f158";
 	font: normal 20px/36px dashicons;
-	vertical-align: top;
 	speak: none;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	width: 36px;
 	height: 36px;
-	content: "\f158";
+	vertical-align: top;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 #gca_popup_close:hover,
 #gca_popup_close:focus {
-	color: #00a0d2;
 	box-shadow: none;
+	color: #00a0d2;
 }
 
-#gca_popup_form {
-	overflow: auto;
-	max-height: 100%;
+
+/* ## Popup Footer
+-------------------------------------------------------------- */
+
+#gca_popup_footer {
+    background: #fcfcfc;
+    border-top: 1px solid #ddd;
+    padding: 8px 16px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
-#gca_popup_form input[type=radio]:focus {
-    -webkit-box-shadow: none;
-    box-shadow: none;
+#gca_popup_insert {
+	float: right;
 }
 
-.gca-column-layouts-wrapper {
-	margin-top: 36px;
-	padding: 16px 16px 0;
+#gca_popup_cancel {
+	float: left;
 }
 
-.gca-column-layouts-wrapper .description {
+#gca_popup_reset {
+	float: left;
+	margin-left: 5px;
+}
+
+
+/* # Popup Content
+---------------------------------------------------------------------------------------------------- */
+
+/* ## Column Layout Styles
+-------------------------------------------------------------- */
+
+.gca-column-layouts-container .description {
 	color: #666;
 	line-height: 28px;
     padding-left: 5px;
+}
+
+.gca-column-layouts-container input[type=radio]:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 #gca_toggle_titles {
@@ -160,11 +210,15 @@
 	display: inline-block !important;
 }
 
-.gca-column-classes-wrapper {
-	margin: 25px 16px 55px;
+
+/* Column Class Styles
+-------------------------------------------------------------- */
+
+.gca-column-classes-container {
+	margin-top: 25px;
 }
 
-.gca-column-classes-wrapper .description {
+.gca-column-classes-container .description {
     color: #666;
 	display: inline-block;
 	margin-bottom: 16px;
@@ -223,29 +277,9 @@
 	color: #aaaaaa;
 }
 
-#gca_popup_form .submitbox {
-    padding: 8px 16px;
-    background: #fcfcfc;
-    border-top: 1px solid #ddd;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
 
-#gca_popup_insert {
-	float: right;
-}
-
-#gca_popup_cancel {
-	float: left;
-}
-
-#gca_popup_reset {
-	float: left;
-	margin-left: 5px;
-}
-
+/* # Media Queries
+---------------------------------------------------------------------------------------------------- */
 
 @media screen and ( max-width: 782px ) {
 	#gca_popup_wrap {

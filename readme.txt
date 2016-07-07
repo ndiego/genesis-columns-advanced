@@ -8,35 +8,38 @@ Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Generates shortcodes for all 37 possible column layouts when using Genesis column classes.
+Adds shortcodes to easily create up to 42 different columned layouts.
 
 == Description ==
 
-This plugin generates shortcodes for every column configuration available with the column classes provided by the Genesis Framework by [StudioPress](http://www.studiopress.com). Shortcodes are easily added using a custom button in your Wordpress editor. Check out the video below for a short demo.
+This plugin was originally designed to generate shortcodes for every column configuration available with the column classes provided by the [Genesis Framework](http://www.studiopress.com), hence the name. We are pleased to announce that as of version 2.0, the plugin is completely standalone and does not require Genesis. By moving away from Genesis, new features have also been added such as the inclusion of fifths.
+
+Shortcodes are easily added using a custom button in your Wordpress editor. They can also be added manually if you so choose. See the FAQ for more details. Check out the video below for a short demo on the plugin.
 
 https://youtu.be/ortnpInn_YE
 
 = Plugin Highlights =
 * **New** Version 2.0 brings massive UI and UX improvements
 * **New** Plugin is now fully translatable, .pot file included
-* 37 different responsive column configurations available
+* **New** Plugin now loads its own CSS column classes and does not require Genesis
+* **New** Plugin now includes fifths so you can finally add 5 even columns!
+* 42 different responsive column configurations available
 * Add custom CSS classes to any column
 * Includes three utility shortcodes to assist with layout, see the FAQ for more info
 * Only adds one button to your Wordpress editor
 * No plugin settings to configure
 * Custom button and TinyMCE popup design integrates seamlessly with the core Wordpress aesthetic
-* Developed for Genesis Framework users but usable by all! (See note on Installation page)
 
 If you have questions or would like to request additional features, such as additional utility shortcodes, please let me know in the plugin support forum.
-
-**Please Note:** This plugin was not developed by Studiopress, the makers of Genesis, and we have no affiliation with the company. We just love the Framework and like building useful tools for Genesis users. 
+ 
 
 = Support This Plugin = 
 
 There are a few ways you can help support the development of this plugin:
 
-1. If you spot an error or bug, please let us know in the support forums. The issue will be diagnosed an a new release push out as soon as possible.
 1. Rate this plugin! The best show of support is to leave a review.
+1. Submit a translation to [info@outermostdesign.com](mailto:info@outermostdesign.com)
+1. If you spot an error or bug, please let us know in the support forums. The issue will be diagnosed an a new release push out as soon as possible.
 1. [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D2LLR72CD82JJ). Time is money, and contributions from users like you really help us dedicate more hours to the continual development and support of this plugin.
 
 
@@ -49,49 +52,85 @@ There are a few ways you can help support the development of this plugin:
 3. From the 'Plugins' page, head to a post/page and check out the new button in your editor.
 4. If you have any implementation questions, please post in the plugin support forum.
 
-**Please Note:** This plugin was designed for Genesis Framework users. Genesis is a premium product by [StudioPress](http://www.studiopress.com). However, if you are a non-Genesis user, this plugin will still activate. A special stylesheet (gca-optional-styles.css) will be applied to the frontend of your site so that you can generate columns too! 
-
 == Frequently Asked Questions ==
 
-= Why is there no option for five even columns, or columns broken down by fifths? =
+= How do I add columns shortcodes? =
 
-This was a conscious decision in order for the plugin to stay inline with the column classes offered by the Genesis Framework. The informational page on Genesis’s column classes can be found on [Studiopress.com](http://my.studiopress.com/tutorials/content-column-classes/) (Note: You have to have purchased Genesis to view this page). As of Genesis v2.2.7, there unfortunately is no option for fifths. If this changes in the future, I will update this plugin. 
+**Standard Method** - The easiest way is to click the "Insert Columns" icon that is added to the top bar of your WordPress editor. This will open a dropdown where you can quickly select a standard column layout. You can also choose "Advanced Layouts" to launch a popup window where you can then choose from any one of the 42 available layouts. Click insert, and the correct shortcodes will be added to your editor's content field. 
 
-= What are the available shortcodes that this plugin generates = 
+**Manual Method** - If you don't want to bother with the popup interface, or want to use the shortcodes outside the editor, you can manually type out the shortcodes. Below is all the available shortcodes that this plugin supports. Note that the "first" shortcodes are used for the first column in a row of columns.
 
 **Main Column Shortcodes**
 
-The “first” shortcodes are used for the first column in a row of columns.
+`
+[one-half-first] …Column Content… [/one-half-first]
+[one-half] …Column Content… [/one-half]
 
-* [one-half-first] …Column Content… [/one-half-first]
-* [one-half] …Column Content… [/one-half]
-* [one-third-first] …Column Content… [/one-third-first]
-* [one-third] …Column Content…[ /one-third]
-* [one-fourth-first] …Column Content… [/one-fourth-first]
-* [one-fourth] …Column Content… [/one-fourth]
-* [one-sixth-first] …Column Content… [/one-sixth-first]
-* [one-sixth] …Column Content… [/one-sixth]
+[one-third-first] …Column Content… [/one-third-first]
+[one-third] …Column Content…[ /one-third]
+[two-thirds-first] …Column Content… [/two-thirds-first]
+[two-thirds] …Column Content…[ /two-thirds]
+
+[one-fourth-first] …Column Content… [/one-fourth-first]
+[one-fourth] …Column Content… [/one-fourth]
+[two-fourths-first] …Column Content… [/two-fourths-first]
+[two-fourths] …Column Content…[ /two-fourths]
+[three-fourths-first] …Column Content… [/three-fourths-first]
+[three-fourths] …Column Content…[ /three-fourths]
+
+[one-fifth-first] …Column Content… [/one-fifth-first]
+[one-fifth] …Column Content…[ /one-fifth]
+[two-fifths-first] …Column Content… [/two-fifths-first]
+[two-fifths] …Column Content…[ /two-fifths]
+[three-fifths-first] …Column Content… [/three-fifths-first]
+[three-fifths] …Column Content…[ /three-fifths]
+[four-fifths-first] …Column Content… [/four-fifths-first]
+[four-fifths] …Column Content…[ /four-fifths]
+
+[one-sixth-first] …Column Content… [/one-sixth-first]
+[one-sixth] …Column Content… [/one-sixth]
+[two-sixths-first] …Column Content… [/two-sixths-first]
+[two-sixths] …Column Content…[ /two-sixths]
+[three-sixths-first] …Column Content… [/three-sixths-first]
+[three-sixths] …Column Content…[ /three-sixths]
+[four-sixths-first] …Column Content… [/four-sixths-first]
+[four-sixths] …Column Content…[ /four-sixths]
+[five-sixths-first] …Column Content… [/five-sixths-first]
+[five-sixths] …Column Content…[ /five-sixths]
+`
 
 **Utility Shortcodes**
 
-* [clearfix] - Adds a clearfix
-* [vertical-spacer] – Adds a clear as well as some vertical separation
-* [columns-container] …Column Content… [/columns-container] – Useful for wrapping column rows
+`
+[clearfix] - Adds a clearfix
+[vertical-spacer] – Adds a clear as well as some vertical separation
+[columns-container] …Column Content… [/columns-container] – Useful for wrapping column rows
+`
 
-**Class Attribute**
+= Can I add attributes to columns? =
 
-All shortcodes accept a "class" attribute. This allows you to add classes to any column or utility function. Classes should be space separated. See below for usage examples:
+Yes! All column and utility shortcodes currently support three attributes: id, class, and style. Multiple classes can be specified, but they must be space separated and all style needs requires proper markup. See below for usage examples:
 
-* [one-half-first class="col1"] …Column Content… [/one-half-first]
-* [clearfix class="class1 class2"]
-* [columns-container class="wrapper-class"] …Column Content… [/columns-container]
+`
+[one-half-first id="main_column" class="col1" style="color:red; border: 1px solid #333"] …Column Content… [/one-half-first]
+[clearfix class="class1 class2"]
+[columns-container class="wrapper-class" style="background-color: green"] …Column Content… [/columns-container]
+`
 
-Have an idea for another utility shortcode? Let us know in the support forums. 
+= How do I disable the builtin stylesheet? =
+If you are already using a Genesis theme, it is likely that it includes column classes. In which case you might not want to use the builtin styles that come with this plugin. You can easily disable the stylesheet using the fitler below. Just add it to you functions.php file. **Note: Genesis themes do not support fifths, so if you diable this plugin's builtin stylesheet, the fifths shortcodes won't do anything.**
+
+`
+add_filter( 'gca_load_column_styles', '__return_false' );
+`
+
+= Will you be adding more utility shortcodes or additional features? = 
+Let us know what you are looking for in the support forums, and we will do our best to make it happen, pending the request is reasonable of course!
 
 == Screenshots ==
 
 1. A screenshot of columns button in editor and available options. 
-2. A screenshot of Advanced Options popup were you can select from all 37 column configurations.
+2. A screenshot of Advanced Options popup were you can select from all 42 column configurations.
 3. A screenshot of the frontend featuring a two column and six column layout with all columns evenly spaced.
 4. A screenshot of the frontend featuring an advanced three column and an advanced two column layout. 
 
@@ -99,7 +138,8 @@ Have an idea for another utility shortcode? Let us know in the support forums.
 
 = 2.0.0 =
 * Complete plugin overhaul to comply with WP standards, substantially improve UI and make translatable
-* Added two new column layouts
+* Added fifths
+* Plugin is now completely standalone
 
 = 1.1.0 =
 * Added class attributes to all shortcodes

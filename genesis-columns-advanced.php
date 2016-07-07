@@ -2,25 +2,25 @@
 /**
  * Plugin Name: Genesis Columns Advanced
  * Plugin URI: http://www.nickdiego.com/genesis-columns-advanced
- * Description: Generates shortcodes for all 37 possible column layouts when using Genesis column classes.
+ * Description: Adds shortcodes to easily create up to 42 different columned layouts.
  * Version: 2.0.0
  * Author: Nick Diego
  * Author URI: http://www.nickdiego.com
  * Text Domain: genesis-columns-advanced
  * License: GPLv2
  *
- * Blox is free software: you can redistribute it and/or modify
+ * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 2 of the License, or
  * any later version.
  *
- * Blox is distributed in the hope that it will be useful,
+ * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Blox. If not, visit <http://www.gnu.org/licenses/>.
+ * along with this program. If not, visit <http://www.gnu.org/licenses/>.
  */
 
 defined( 'WPINC' ) or die;
@@ -42,6 +42,7 @@ class Genesis_Columns_Advanced {
 
 		add_action( 'wp_loaded', array( $this, 'init') );
 	}
+
 
 	/**
 	 * Initialize plugin.
@@ -134,8 +135,7 @@ class Genesis_Columns_Advanced {
 	 * @since 1.0.0
 	 */
 	public function tinymce_popup() {
-		include dirname( __FILE__ ) . '/tinymce/popup.php';
-		exit;
+		include_once dirname( __FILE__ ) . '/tinymce/popup.php';
 	}
 	
 	
@@ -177,9 +177,9 @@ class Genesis_Columns_Advanced {
 	 */
 	function frontend_scripts_enqueue() {
 
-		// Load our optional stylesheet if the Genesis Framework is not activated. This allows us to use GCA without Genesis
-		if ( ! function_exists('genesis_pre') ) {
-			wp_enqueue_style( 'gca-optional-styles',  plugin_dir_url( __FILE__ ) . 'css/gca-optional-styles.css' );
+		// Load the columns stylesheet. Use filter to disable and load your own
+		if ( apply_filters( 'gca_load_column_styles', true ) ) {
+			wp_enqueue_style( 'gca-column-styles',  plugin_dir_url( __FILE__ ) . 'css/gca-column-styles.css' );
 		}
 	}
 	
