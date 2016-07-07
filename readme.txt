@@ -12,7 +12,7 @@ Adds shortcodes to easily create up to 42 different columned layouts.
 
 == Description ==
 
-This plugin was originally designed to generate shortcodes for every column configuration available with the column classes provided by the [Genesis Framework](http://www.studiopress.com), hence the name. We are pleased to announce that as of version 2.0, the plugin is completely standalone and does not require Genesis. By moving away from Genesis, new features have also been added such as the inclusion of fifths.
+This plugin was originally designed to generate shortcodes for every column configuration available with the column classes provided by the [Genesis Framework](http://www.studiopress.com), hence the name. We are pleased to announce that as of version 2.0, the plugin is completely standalone and does not require Genesis. The plugin now loads its own CSS styles, which can be disabled if you desire. See the FAQ for more details. By moving away from Genesis, we have been able to add new features, such as the inclusion of fifths, and it opens the door to more enhancements in the future!
 
 Shortcodes are easily added using a custom button in your Wordpress editor. They can also be added manually if you so choose. See the FAQ for more details. Check out the video below for a short demo on the plugin.
 
@@ -118,7 +118,7 @@ Yes! All column and utility shortcodes currently support three attributes: id, c
 `
 
 = How do I disable the builtin stylesheet? =
-If you are already using a Genesis theme, it is likely that it includes column classes. In which case you might not want to use the builtin styles that come with this plugin. You can easily disable the stylesheet using the fitler below. Just add it to you functions.php file. **Note: Genesis themes do not support fifths, so if you diable this plugin's builtin stylesheet, the fifths shortcodes won't do anything.**
+If you are already using a Genesis theme, it is likely that it includes column classes. In which case you might not want to use the builtin styles that come with this plugin. You can easily disable the stylesheet using the filter below. Just add it to you functions.php file. **Note: Genesis themes do not support fifths, so if you diable this plugin's builtin stylesheet, the fifths shortcodes won't do anything.**
 
 `
 add_filter( 'gca_load_column_styles', '__return_false' );
@@ -137,9 +137,12 @@ Let us know what you are looking for in the support forums, and we will do our b
 == Changelog ==
 
 = 2.0.0 =
-* Complete plugin overhaul to comply with WP standards, substantially improve UI and make translatable
+* Complete plugin overhaul to comply with WP standards
+* Plugin is now fully translatable
+* Plugin is now completely standalone, does not require the Genesis Framework
+* Added brand new UI for the TinyMCE popup
 * Added fifths
-* Plugin is now completely standalone
+* Added id and style attributes to all shortcodes
 
 = 1.1.0 =
 * Added class attributes to all shortcodes

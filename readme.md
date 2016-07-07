@@ -1,8 +1,10 @@
 ## Welcome to Genesis Columns Advanced
 
-This plugin generates shortcodes for all 37 possible column layouts when using Genesis column classes. View a brief video demo [here](https://youtu.be/ortnpInn_YE).
+This plugin was originally designed to generate shortcodes for every column configuration available with the column classes provided by the [Genesis Framework](http://www.studiopress.com), hence the name. We are pleased to announce that as of version 2.0, the plugin is completely standalone and does not require Genesis. The plugin now loads its own CSS styles, which can be disabled if you desire. See the FAQ for more details. By moving away from Genesis, we have been able to add new features, such as the inclusion of fifths, and it opens the door to more enhancements in the future!
 
-Genesis Columns Advanced is a completely free WordPress plugin built for users of the [Genesis Framework](http://www.studiopress.com). The plugin is developed by Nick Diego and Outermost Design, LLC. We have no direct affiliation with the makers of Genesis.
+Shortcodes are easily added using a custom button in your Wordpress editor. They can also be added manually if you so choose. See the FAQ for more details. Check out [this video](https://youtu.be/ortnpInn_YE) for a short demo on the plugin.
+
+The plugin is developed by [Nick Diego](http://www.nickdiego.com) and Outermost Design, LLC.
 
 ### Support
 
@@ -18,8 +20,12 @@ We would love to hear from you! If you find a bug or have a feature request, ple
 ### Changelog
 
 ##### Version 2.0.0
-* Complete plugin overhaul to comply with WP standards, substantially improve UI and make translatable
-* Added two new column layouts
+* Complete plugin overhaul to comply with WP standards
+* Plugin is now fully translatable
+* Plugin is now completely standalone, does not require the Genesis Framework
+* Added brand new UI for the TinyMCE popup
+* Added fifths
+* Added id and style attributes to all shortcodes
 
 ##### Version 1.1.0
 * Added class attributes to all shortcodes
