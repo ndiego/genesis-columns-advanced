@@ -26,10 +26,6 @@
 defined( 'WPINC' ) or die;
 
 
-//include_once dirname( __FILE__ ) . '/shortcodes.php';
-
-
-
 class Genesis_Columns_Advanced {
 
 
