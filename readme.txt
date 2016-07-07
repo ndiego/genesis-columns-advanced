@@ -39,7 +39,7 @@ There are a few ways you can help support the development of this plugin:
 
 1. Rate this plugin! The best show of support is to leave a review.
 1. Submit a translation to [info@outermostdesign.com](mailto:info@outermostdesign.com)
-1. If you spot an error or bug, please let us know in the support forums. The issue will be diagnosed an a new release push out as soon as possible.
+1. If you spot an error or bug, please let us know in the support forums. The issue will be diagnosed and a new release pushed out as soon as possible.
 1. [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D2LLR72CD82JJ). Time is money, and contributions from users like you really help us dedicate more hours to the continual development and support of this plugin.
 
 
@@ -109,7 +109,7 @@ There are a few ways you can help support the development of this plugin:
 
 = Can I add attributes to columns? =
 
-Yes! All column and utility shortcodes currently support three attributes: id, class, and style. Multiple classes can be specified, but they must be space separated and all style needs requires proper markup. See below for usage examples:
+Yes! All column and utility shortcodes currently support three attributes: id, class, and style. Multiple classes can be specified, but they must be space separated and all style requires proper markup. See below for usage examples:
 
 `
 [one-half-first id="main_column" class="col1" style="color:red; border: 1px solid #333"] …Column Content… [/one-half-first]
@@ -117,8 +117,8 @@ Yes! All column and utility shortcodes currently support three attributes: id, c
 [columns-container class="wrapper-class" style="background-color: green"] …Column Content… [/columns-container]
 `
 
-= How do I disable the builtin stylesheet? =
-If you are already using a Genesis theme, it is likely that it includes column classes. In which case you might not want to use the builtin styles that come with this plugin. You can easily disable the stylesheet using the filter below. Just add it to you functions.php file. **Note: Genesis themes do not support fifths, so if you diable this plugin's builtin stylesheet, the fifths shortcodes won't do anything.**
+= How do I disable the built-in stylesheet? =
+If you are already using a Genesis theme, it is likely that it includes column classes. In which case you might not want to use the built-in styles that come with this plugin. You can easily disable the stylesheet using the filter below. Just add it to your functions.php file. **Note: Genesis themes do not support fifths, so if you disable this plugin's built-in stylesheet, the fifths shortcodes won't do anything.**
 
 `
 add_filter( 'gca_load_column_styles', '__return_false' );
@@ -130,7 +130,7 @@ Let us know what you are looking for in the support forums, and we will do our b
 == Screenshots ==
 
 1. A screenshot of columns button in editor and available options. 
-2. A screenshot of Advanced Options popup were you can select from all 42 column configurations.
+2. A screenshot of Advanced Options popup where you can select from all 42 column configurations.
 3. A screenshot of the frontend featuring a two column and six column layout with all columns evenly spaced.
 4. A screenshot of the frontend featuring an advanced three column and an advanced two column layout. 
 

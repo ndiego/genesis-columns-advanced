@@ -134,7 +134,7 @@ $gca_all_layouts = array(
 			</div>
 		
 			<div class="gca-column-classes-container">
-				<span class="description"><?php _e( 'Optionally add custom CSS classes to each column. Multiple classes must be space separated.', 'genesis-columns-advanced' ); ?></span>
+				<span class="description"><?php _e( 'Optionally, add custom CSS classes to each column. Multiple classes must be separated by a space.', 'genesis-columns-advanced' ); ?></span>
 				<div class="gca-column-classes">
 					<?php
 		
