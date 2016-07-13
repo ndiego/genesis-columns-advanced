@@ -19,6 +19,9 @@ We would love to hear from you! If you find a bug or have a feature request, ple
 
 ### Changelog
 
+##### Version 2.0.1
+* Fixed bug with missing styles for the vertical-spacer shortcode
+
 ##### Version 2.0.0
 * Complete plugin overhaul to comply with WP standards
 * Plugin is now fully translatable

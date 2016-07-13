@@ -4,7 +4,7 @@ Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: columns, shortcode, genesis, Genesis Framework, genesiswp, TinyMCE, admin
 Requires at least: 3.6
 Tested up to: 4.5
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -135,6 +135,9 @@ Let us know what you are looking for in the support forums, and we will do our b
 4. A screenshot of the frontend featuring an advanced three column and an advanced two column layout. 
 
 == Changelog ==
+
+= 2.0.1 =
+* Fixed bug with missing styles for the vertical-spacer shortcode (Thanks DanaE23!)
 
 = 2.0.0 =
 * Complete plugin overhaul to comply with WP standards
