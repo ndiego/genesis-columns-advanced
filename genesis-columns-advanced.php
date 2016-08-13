@@ -271,12 +271,12 @@ class Genesis_Columns_Advanced {
 		
 		// Setup the classes
 		$class         = ' ' . $all_shortcodes[$name]['class'];	
-		$extra_classes = sanitize_text_field( $atts['class'] ); /* NEED TO CHECK THIS SANITIZATION METHOD */
+		$extra_classes = sanitize_text_field( $atts['class'] ); 
 		$extra_classes = ( $extra_classes != '' ) ? ' ' . $extra_classes : '';
 		$class         = ' class="' . $identifier . $class . $extra_classes . '"';
 		
 		// Setup the styles
-		$style = sanitize_text_field( $atts['style'] ); /* NEED TO CHECK THIS SANITIZATION METHOD */
+		$style = sanitize_text_field( $atts['style'] ); 
 		$style = ( $style != '' ) ? ' style="' . $style . '"' : '';
 		
 		// Setup the content
