@@ -129,3 +129,8 @@
 	clear: both;
 	margin-bottom: 30px;
 }
+
+.columns-container {
+	clear: both;
+	overflow: hidden;
+}

@@ -19,6 +19,9 @@ We would love to hear from you! If you find a bug or have a feature request, ple
 
 ### Changelog
 
+##### Version 2.0.2 (2016-8-14)
+* Added default styling to columns-container shortcode to fix styling bug
+
 ##### Version 2.0.1
 * Fixed bug with missing styles for the vertical-spacer shortcode
 

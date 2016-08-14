@@ -3,7 +3,7 @@
  * Plugin Name: Genesis Columns Advanced
  * Plugin URI: http://www.nickdiego.com/plugins/genesis-columns-advanced
  * Description: Adds shortcodes to easily create up to 42 different columned layouts.
- * Version: 2.0.1
+ * Version: 2.0.2
  * Author: Nick Diego
  * Author URI: http://www.nickdiego.com
  * Text Domain: genesis-columns-advanced
