@@ -16,7 +16,7 @@ This plugin was originally designed to generate shortcodes for every column conf
 
 Shortcodes are easily added using a custom button in your Wordpress editor. They can also be added manually if you so choose. See the FAQ for more details. Check out the video below for a short demo on the plugin.
 
-https://youtu.be/ortnpInn_YE
+https://www.youtube.com/watch?v=ortnpInn_YE
 
 = Plugin Highlights =
 * **New** Version 2.0 brings massive UI and UX improvements
