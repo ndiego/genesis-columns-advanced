@@ -237,7 +237,12 @@ class Genesis_Columns_Advanced {
 			if ( $atts['type'] == 'column' ) {
 
 				$all_shortcodes[$shortcode . '-first'] =	array(
-					'class'	=> $shortcode . ' first',
+					'class'	=> $shortcode . ' first gca-first',
+					'type'	=> $atts['type']
+				);
+				
+				$all_shortcodes[$shortcode . '-last'] =	array(
+					'class'	=> $shortcode . ' gca-last',
 					'type'	=> $atts['type']
 				);
 			}
