@@ -134,3 +134,13 @@
 	clear: both;
 	overflow: hidden;
 }
+
+.column-clear {
+	clear:both;
+	display:block;
+	font-size:0; 
+	height:0;
+	line-height:0;
+	overflow: hidden;
+	width:100%;
+}

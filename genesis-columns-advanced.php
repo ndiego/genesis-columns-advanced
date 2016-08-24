@@ -196,7 +196,7 @@ class Genesis_Columns_Advanced {
 		}
 
 		// define shortcodes
-		$shortcodes = apply_filters( 'NEED_shortcodes', array(
+		$shortcodes = apply_filters( 'gca_shortcodes', array(
 			'one-half' 			=> array( 'type' => 'column' ),
 			'one-third' 		=> array( 'type' => 'column' ),
 			'two-thirds' 		=> array( 'type' => 'column' ),
@@ -237,12 +237,12 @@ class Genesis_Columns_Advanced {
 			if ( $atts['type'] == 'column' ) {
 
 				$all_shortcodes[$shortcode . '-first'] =	array(
-					'class'	=> $shortcode . ' first gca-first',
+					'class'	=> $shortcode . ' first ' . apply_filters( 'gca_first_column_identifier_class', 'gca-first' ),
 					'type'	=> $atts['type']
 				);
 				
 				$all_shortcodes[$shortcode . '-last'] =	array(
-					'class'	=> $shortcode . ' gca-last',
+					'class'	=> $shortcode . ' ' . apply_filters( 'gca_last_column_identifier_class', 'gca-last' ),
 					'type'	=> $atts['type']
 				);
 			}
@@ -287,8 +287,14 @@ class Genesis_Columns_Advanced {
 		// Setup the content
 		$content = ( $content ) ? $this->content_strip_autop( $content ) : '';
 		
+		// Add content before column block
+		$output = strpos( $class, 'first' ) != false ? apply_filters( 'gca_before_columns', '', $class, $name ) : '';
+		
 		// Built output
-		$output = '<' . $markup . $id . $class . $style . '>' . $content . '</' . $markup . '>';
+		$output .= '<' . $markup . $id . $class . $style . '>' . $content . '</' . $markup . '>';
+		
+		/// Add content after column block
+		$output .= strpos( $name, 'last' ) != false ? apply_filters( 'gca_after_columns', '<div class="gca-utility column-clear"></div>', $class, $name ) : '';
 		
 		return $output;
 	}
@@ -297,6 +303,11 @@ class Genesis_Columns_Advanced {
 	/**
 	 * Strip content of AutoP
 	 * Courtesy of Mathew Smith (Genesis Easy Columns)
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $content The content entered into each column shortcode
+	 * @return string A string of filtered content
 	 */
 	public function content_strip_autop( $content ){
 		$content = preg_replace( '#^<\/p>|^<br \/>|<p>$#', '', $content );
@@ -306,18 +317,52 @@ class Genesis_Columns_Advanced {
 	
 	
 	/**
-	 * Filters the content to remove any extra paragraph or break tags caused by shortcodes.
+	 * Filters the page content to remove any extra paragraph or break tags caused by shortcodes.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param string $content The content entered into each column shortcode
+	 * @param string $content The content on the page
 	 * @return string A string of filtered content
 	 */
 	function shortcode_empty_paragraph_fix( $content ) {
 		$array = array(
-			'<p>['    => '[',
-			']</p>'   => ']',
-			']<br />' => ']'
+		
+			// Columns
+			'<p>[one'      	 => '[one',
+			'<p>[two'        => '[two',
+			'<p>[three'    	 => '[three',
+			'<p>[four'     	 => '[four',
+			'<p>[five'     	 => '[five',
+			'first]</p>'   	 => 'first]',
+			'last]</p>'    	 => 'last]',
+			'half]</p>'    	 => 'half]',
+			'third]</p>'   	 => 'third]',
+			'thirds]</p>'  	 => 'thirds]',
+			'fourth]</p>'  	 => 'fourth]',
+			'fourths]</p>' 	 => 'fourths]',
+			'fifth]</p>'   	 => 'fifth]',
+			'fifths]</p>'  	 => 'fifths]',
+			'sixth]</p>'   	 => 'sixth]',
+			'sixths]</p>'  	 => 'sixths]',
+			'first]<br />' 	 => 'first]',
+			'last]<br />'  	 => 'last]',
+			'half]<br />'  	 => 'half]',
+			'third]<br />' 	 => 'third]',
+			'thirds]<br />'  => 'thirds]',
+			'fourth]<br />'  => 'fourth]',
+			'fourths]<br />' => 'fourths]',
+			'fifth]<br />' 	 => 'fifth]',
+			'fifths]<br />'  => 'fifths]',
+			'sixth]<br />' 	 => 'sixth]',
+			'sixths]<br />'  => 'sixths]',
+			
+			// Utilities
+			// Since clearfix and verical-spacer don't wrap content, can't currently strip <br />
+			'<p>[columns-container'    => '[columns-container',
+			'columns-container]</p>'   => 'columns-container]',
+			'columns-container]<br />' => 'columns-container]',
+			'<p>[clearfix'			   => '[clearfix',
+			'<p>[vertical-spacer'	   => '[vertical-spacer',
 		);
 		return strtr( $content, $array );
 	}

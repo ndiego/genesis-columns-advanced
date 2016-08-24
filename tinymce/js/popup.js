@@ -180,9 +180,15 @@ var gca_popup;
 			
 				for ( columnIndex = 0; columnIndex < columns.length; ++columnIndex ) {
 				
-					first = columnIndex == 0 ? '-first' : '';
-				
-					output += '[' + columns[columnIndex] + first + classes[columnIndex] + ']' + text[columnIndex] + '[/' + columns[columnIndex] + first + ']<br>';
+					if ( columnIndex == 0 ) { 
+						type = '-first';
+					} else if ( columnIndex == ( columns.length -  1) ) {
+						type = '-last';
+					} else {
+						type = '';
+					}
+									
+					output += '[' + columns[columnIndex] + type + classes[columnIndex] + ']' + text[columnIndex] + '[/' + columns[columnIndex] + type + ']<br>';
 				}
 				
 				// Insert shortcodes and close popup
