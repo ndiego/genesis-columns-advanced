@@ -65,38 +65,53 @@ There are a few ways you can help support the development of this plugin:
 `
 [one-half-first] …Column Content… [/one-half-first]
 [one-half] …Column Content… [/one-half]
+[one-half-last] …Column Content… [/one-half-last]
 
 [one-third-first] …Column Content… [/one-third-first]
 [one-third] …Column Content…[ /one-third]
+[one-third-last] …Column Content… [/one-third-last]
 [two-thirds-first] …Column Content… [/two-thirds-first]
 [two-thirds] …Column Content…[ /two-thirds]
+[two-thirds-last] …Column Content… [/two-thirds-last]
 
 [one-fourth-first] …Column Content… [/one-fourth-first]
 [one-fourth] …Column Content… [/one-fourth]
+[one-fourth-last] …Column Content… [/one-fourth-last]
 [two-fourths-first] …Column Content… [/two-fourths-first]
 [two-fourths] …Column Content…[ /two-fourths]
+[two-fourths-last] …Column Content… [/two-fourths-last]
 [three-fourths-first] …Column Content… [/three-fourths-first]
 [three-fourths] …Column Content…[ /three-fourths]
+[three-fourths-last] …Column Content… [/three-fourths-last]
 
 [one-fifth-first] …Column Content… [/one-fifth-first]
 [one-fifth] …Column Content…[ /one-fifth]
+[one-fifth-last] …Column Content… [/one-fifth-last]
 [two-fifths-first] …Column Content… [/two-fifths-first]
 [two-fifths] …Column Content…[ /two-fifths]
+[two-fifths-last] …Column Content… [/two-fifths-last]
 [three-fifths-first] …Column Content… [/three-fifths-first]
 [three-fifths] …Column Content…[ /three-fifths]
+[three-fifths-last] …Column Content… [/three-fifths-last]
 [four-fifths-first] …Column Content… [/four-fifths-first]
 [four-fifths] …Column Content…[ /four-fifths]
+[four-fifths-last] …Column Content… [/four-fifths-last]
 
 [one-sixth-first] …Column Content… [/one-sixth-first]
 [one-sixth] …Column Content… [/one-sixth]
+[one-sixth-last] …Column Content… [/one-sixth-last]
 [two-sixths-first] …Column Content… [/two-sixths-first]
 [two-sixths] …Column Content…[ /two-sixths]
+[two-sixths-last] …Column Content… [/two-sixths-last]
 [three-sixths-first] …Column Content… [/three-sixths-first]
 [three-sixths] …Column Content…[ /three-sixths]
+[three-sixths-last] …Column Content… [/three-sixths-last]
 [four-sixths-first] …Column Content… [/four-sixths-first]
 [four-sixths] …Column Content…[ /four-sixths]
+[four-sixths-last] …Column Content… [/four-sixths-last]
 [five-sixths-first] …Column Content… [/five-sixths-first]
 [five-sixths] …Column Content…[ /five-sixths]
+[five-sixths-last] …Column Content… [/five-sixths-last]
 `
 
 **Utility Shortcodes**
@@ -135,6 +150,8 @@ Let us know what you are looking for in the support forums, and we will do our b
 4. A screenshot of the frontend featuring an advanced three column and an advanced two column layout. 
 
 == Changelog ==
+
+= 2.1.0 (2016-8-25) =
 
 = 2.0.2 (2016-8-14) =
 * Added default styling to columns-container shortcode to fix styling bug

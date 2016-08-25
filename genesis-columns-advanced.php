@@ -180,6 +180,11 @@ class Genesis_Columns_Advanced {
 	}
 	
 	
+	/**
+	 * Loop through all of the available shortcodes and add them to WP
+	 *
+	 * @since 2.0.0
+	 */
 	public function add_shortcodes() {
 		foreach ( $this->get_shortcodes() as $shortcode => $atts ) {
 			add_shortcode( $shortcode, array( $this, 'shortcodes' ) );
@@ -187,6 +192,13 @@ class Genesis_Columns_Advanced {
 	}
 	
 	
+	/**
+	 * Loads the optional stylesheet to the frontend if Genesis is not active
+	 *
+	 * @since 2.0.0
+	 *
+	 * @return array $all_shortcodes An array of all the shorcodes provided by this plugin
+	 */
 	public function get_shortcodes() {
 	
 		static $all_shortcodes;
@@ -226,14 +238,14 @@ class Genesis_Columns_Advanced {
 		foreach ( $shortcodes as $shortcode => $atts ) {
 
 			// add prefix
-			//$shortcode = $this->prefix . $short;
+			// $shortcode = $this->prefix . $shortcode;
 
 			$all_shortcodes[$shortcode] =	array(
 				'class' => $shortcode,
 				'type'	=> $atts['type']
 			);
 			
-			// If it's a utlity shortcode, don't add the corresponding first shortcode
+			// If it's a utlity shortcode, don't add the corresponding first or last shortcode
 			if ( $atts['type'] == 'column' ) {
 
 				$all_shortcodes[$shortcode . '-first'] =	array(
@@ -252,6 +264,16 @@ class Genesis_Columns_Advanced {
 	}
 	
 	
+	/**
+	 * Builds the frontend shortcode markup
+	 *
+	 * @since 2.0.0
+	 *
+	 * @param array $atts     An array of all the available shortcode atts
+	 * @param string $content The content wrapped by the shortcode, if the shortcode wraps content
+	 * @param string $name    The name of the shortcode
+	 * @return string $output An array of all the shorcodes provided by this plugin
+	 */
 	public function shortcodes( $atts, $content = null, $name ) {
 		
 		$atts = shortcode_atts( array(
@@ -306,8 +328,8 @@ class Genesis_Columns_Advanced {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param string $content The content entered into each column shortcode
-	 * @return string A string of filtered content
+	 * @param string $content  The content entered into each column shortcode
+	 * @return string $content A string of filtered content
 	 */
 	public function content_strip_autop( $content ){
 		$content = preg_replace( '#^<\/p>|^<br \/>|<p>$#', '', $content );
