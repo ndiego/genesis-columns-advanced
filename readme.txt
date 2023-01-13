@@ -3,7 +3,7 @@ Contributors: ndiego, outermostdesign
 Tags: columns, shortcode, genesis, Genesis Framework, genesiswp, TinyMCE, admin
 Requires at least: 3.6
 Tested up to: 5.7
-Stable tag: 2.0.4
+Stable tag: 2.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,7 +47,7 @@ There are a few ways you can help support the development of this plugin:
 
 == Installation ==
 
-1. You have a couple options:
+1. You have a couple of options:
 	* Go to Plugins->Add New and search for "Genesis Columns Advanced”. Once found, click "Install".
 	* Download the folder from Wordpress.org and zip the folder. Then upload via Plugins->Add New->Upload.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
@@ -138,9 +138,12 @@ Let us know what you are looking for in the support forums, and we will do our b
 
 == Changelog ==
 
-**Update Notice (v2.0.4)**
+**Update Notice (v2.0.4+)**
 
 Due to potential security concerns, style attributes that contain quotes and parenthesis are no longer supported. If you have added inline background images to column shortcodes, you will need to apply these styles via a custom CSS class instead.
+
+= 2.0.5 (2023–01-13) =
+* Fixed PHP 8.0+ deprecation error (Thanks i4nd90)
 
 = 2.0.4 (2022–12-28) =
 * Fixed potential security issues (Thanks WPScan)
