@@ -1,9 +1,9 @@
 /**
- * The builtin column class CSS file for Genesis Columns Advanced. 
+ * The builtin column class CSS file for Genesis Columns Advanced.
  * This file can be disabled using the gca_load_column_styles filter.
  *
  * Width: 100%
- * Gutter: 2.5641025641%
+ * Gutter: 2.564102564102564%
  * Link: http://www.nickdiego.com/plugins/genesis-columns-advanced/
  ----------------------------------------------------------------------------- */
 
@@ -12,70 +12,70 @@
 --------------------------------------------- */
 
 .five-sixths,
-.four-fifths,
 .four-sixths,
+.four-fifths,
 .one-fifth,
 .one-fourth,
 .one-half,
 .one-sixth,
 .one-third,
-.three-fifths,
 .three-fourths,
+.three-fifths,
 .three-sixths,
-.two-fifths,
 .two-fourths,
+.two-fifths,
 .two-sixths,
 .two-thirds {
 	float: left;
-	margin-left: 2.5641025641%;
+	margin-left: 2.564102564102564%;
 }
 
 .one-half,
 .three-sixths,
 .two-fourths {
-	width: 48.717948718%;
+	width: 48.717948717948715%;
 }
 
 .one-third,
 .two-sixths {
-	width: 31.6239316239%;
+	width: 31.623931623931625%;
 }
 
 .four-sixths,
 .two-thirds {
-	width: 63.2478632479%;
+	width: 65.81196581196582%;
 }
 
 .one-fourth {
-	width: 23.0769230769%;
+	width: 23.076923076923077%;
 }
 
 .three-fourths {
-	width: 69.2307692308%;
+	width: 74.35897435897435%;
 }
 
 .one-fifth {
-	width: 17.9487179487%;
+	width: 17.94871794871795%;
 }
 
 .two-fifths {
-	width: 35.8974358974%;
+	width: 38.46153846153846%;
 }
 
 .three-fifths {
-	width: 53.8461538462%;
+	width: 58.97435897435898%;
 }
 
 .four-fifths {
-	width: 71.7948717949%;
+	width: 79.48717948717949%;
 }
 
 .one-sixth {
-	width: 14.5299145299%;
+	width: 14.52991452991453%;
 }
 
 .five-sixths {
-	width: 72.6495726496%;
+	width: 82.90598290598291%;
 }
 
 .first {
@@ -107,7 +107,7 @@
 		margin: 0;
 		width: 100%;
 	}
-	
+
 }
 
 
@@ -133,14 +133,4 @@
 .columns-container {
 	clear: both;
 	overflow: hidden;
-}
-
-.column-clear {
-	clear:both;
-	display:block;
-	font-size:0; 
-	height:0;
-	line-height:0;
-	overflow: hidden;
-	width:100%;
 }

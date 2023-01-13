@@ -1,10 +1,9 @@
 === Genesis Columns Advanced ===
 Contributors: ndiego, outermostdesign
-Donate Link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D2LLR72CD82JJ
 Tags: columns, shortcode, genesis, Genesis Framework, genesiswp, TinyMCE, admin
 Requires at least: 3.6
-Tested up to: 4.5
-Stable tag: 2.0.2
+Tested up to: 5.7
+Stable tag: 2.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,23 +11,26 @@ Adds shortcodes to easily create up to 42 different columned layouts.
 
 == Description ==
 
+> ⚠️  **Warning**
+>
+> Genesis Columns Advanced is nearing the end of its life. The plugin was built for the Classic Editor and is not needed in the block Editor (Gutenberg). Critical support will still be provided in the support forum, but the plugin is no longer being actively developed. Consider transitioning to the native WordPress Columns block.
+
 This plugin was originally designed to generate shortcodes for every column configuration available with the column classes provided by the [Genesis Framework](http://www.studiopress.com), hence the name. We are pleased to announce that as of version 2.0, the plugin is completely standalone and does not require Genesis. The plugin now loads its own CSS styles, which can be disabled if you desire. See the FAQ for more details. By moving away from Genesis, we have been able to add new features, such as the inclusion of fifths, and it opens the door to more enhancements in the future!
 
-Shortcodes are easily added using a custom button in your Wordpress editor. They can also be added manually if you so choose. See the FAQ for more details. Check out the video below for a short demo on the plugin.
+Shortcodes are easily added using a custom button in your WordPress editor. They can also be added manually if you so choose. See the FAQ for more details. Check out the video below for a short demo on the plugin.
 
 https://www.youtube.com/watch?v=ortnpInn_YE
 
 = Plugin Highlights =
-* **New** Version 2.0 brings massive UI and UX improvements
-* **New** Plugin is now fully translatable, .pot file included
-* **New** Plugin now loads its own CSS column classes and does not require Genesis
-* **New** Plugin now includes fifths so you can finally add 5 even columns!
+* Plugin is fully translatable, .pot file included
+* Plugin loads its own CSS column classes and does not require Genesis
+* Plugin includes fifths so you can finally add 5 even columns!
 * 42 different responsive column configurations available
 * Add custom CSS classes to any column
 * Includes three utility shortcodes to assist with layout, see the FAQ for more info
-* Only adds one button to your Wordpress editor
+* Only adds one button to your WordPress editor
 * No plugin settings to configure
-* Custom button and TinyMCE popup design integrates seamlessly with the core Wordpress aesthetic
+* Custom button and TinyMCE popup design integrates seamlessly with the core WordPress aesthetic
 
 If you have questions or would like to request additional features, such as additional utility shortcodes, please let me know in the plugin support forum.
  
@@ -65,53 +67,38 @@ There are a few ways you can help support the development of this plugin:
 `
 [one-half-first] …Column Content… [/one-half-first]
 [one-half] …Column Content… [/one-half]
-[one-half-last] …Column Content… [/one-half-last]
 
 [one-third-first] …Column Content… [/one-third-first]
 [one-third] …Column Content…[ /one-third]
-[one-third-last] …Column Content… [/one-third-last]
 [two-thirds-first] …Column Content… [/two-thirds-first]
 [two-thirds] …Column Content…[ /two-thirds]
-[two-thirds-last] …Column Content… [/two-thirds-last]
 
 [one-fourth-first] …Column Content… [/one-fourth-first]
 [one-fourth] …Column Content… [/one-fourth]
-[one-fourth-last] …Column Content… [/one-fourth-last]
 [two-fourths-first] …Column Content… [/two-fourths-first]
 [two-fourths] …Column Content…[ /two-fourths]
-[two-fourths-last] …Column Content… [/two-fourths-last]
 [three-fourths-first] …Column Content… [/three-fourths-first]
 [three-fourths] …Column Content…[ /three-fourths]
-[three-fourths-last] …Column Content… [/three-fourths-last]
 
 [one-fifth-first] …Column Content… [/one-fifth-first]
 [one-fifth] …Column Content…[ /one-fifth]
-[one-fifth-last] …Column Content… [/one-fifth-last]
 [two-fifths-first] …Column Content… [/two-fifths-first]
 [two-fifths] …Column Content…[ /two-fifths]
-[two-fifths-last] …Column Content… [/two-fifths-last]
 [three-fifths-first] …Column Content… [/three-fifths-first]
 [three-fifths] …Column Content…[ /three-fifths]
-[three-fifths-last] …Column Content… [/three-fifths-last]
 [four-fifths-first] …Column Content… [/four-fifths-first]
 [four-fifths] …Column Content…[ /four-fifths]
-[four-fifths-last] …Column Content… [/four-fifths-last]
 
 [one-sixth-first] …Column Content… [/one-sixth-first]
 [one-sixth] …Column Content… [/one-sixth]
-[one-sixth-last] …Column Content… [/one-sixth-last]
 [two-sixths-first] …Column Content… [/two-sixths-first]
 [two-sixths] …Column Content…[ /two-sixths]
-[two-sixths-last] …Column Content… [/two-sixths-last]
 [three-sixths-first] …Column Content… [/three-sixths-first]
 [three-sixths] …Column Content…[ /three-sixths]
-[three-sixths-last] …Column Content… [/three-sixths-last]
 [four-sixths-first] …Column Content… [/four-sixths-first]
 [four-sixths] …Column Content…[ /four-sixths]
-[four-sixths-last] …Column Content… [/four-sixths-last]
 [five-sixths-first] …Column Content… [/five-sixths-first]
 [five-sixths] …Column Content…[ /five-sixths]
-[five-sixths-last] …Column Content… [/five-sixths-last]
 `
 
 **Utility Shortcodes**
@@ -151,7 +138,15 @@ Let us know what you are looking for in the support forums, and we will do our b
 
 == Changelog ==
 
-= 2.1.0 (2016-8-25) =
+**Update Notice (v2.0.4)**
+
+Due to potential security concerns, style attributes that contain quotes and parenthesis are no longer supported. If you have added inline background images to column shortcodes, you will need to apply these styles via a custom CSS class instead.
+
+= 2.0.4 (2022–12-28) =
+* Fixed potential security issues (Thanks WPScan)
+
+= 2.0.3 (2017–1-12) =
+* Fixed bug with incorrect column widths (Thanks fourlightsweb)
 
 = 2.0.2 (2016-8-14) =
 * Added default styling to columns-container shortcode to fix styling bug
@@ -187,3 +182,7 @@ Let us know what you are looking for in the support forums, and we will do our b
 = 1.0.0 =
 * Initial Release
 
+== Upgrade Notice ==
+
+= 2.0.4 =
+Due to potential security concerns, style attributes that contain quotes and parenthesis are no longer supported. If you have added inline background images to column shortcodes, you will need to apply these styles via a custom CSS class instead.

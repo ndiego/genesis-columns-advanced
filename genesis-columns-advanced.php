@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Genesis Columns Advanced
- * Plugin URI: http://www.nickdiego.com/plugins/genesis-columns-advanced
+ * Plugin URI: https://www.nickdiego.com/plugins/genesis-columns-advanced
  * Description: Adds shortcodes to easily create up to 42 different columned layouts.
- * Version: 2.0.2
+ * Version: 2.0.4
  * Author: Nick Diego
- * Author URI: http://www.nickdiego.com
+ * Author URI: https://www.nickdiego.com
  * Text Domain: genesis-columns-advanced
  * License: GPLv2
  *
@@ -46,22 +46,22 @@ class Genesis_Columns_Advanced {
 	 * @since 2.0.0
 	 */
 	public function init() {
-		
+
 		load_plugin_textdomain( 'genesis-columns-advanced', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 		add_action('admin_init', array( $this, 'add_tinymce_button' ) );
-		
+
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts_enqueue' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts_enqueue' ) );
-		
+
 		$this->add_shortcodes();
-		
+
 		add_filter( 'the_content', array( $this, 'shortcode_empty_paragraph_fix' ) );
-		
+
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
 	}
-	
-	
+
+
 	/**
 	 * Initialize the columns shortcode tinymce button
 	 *
@@ -81,8 +81,8 @@ class Genesis_Columns_Advanced {
 			add_action( 'admin_print_footer_scripts', array( $this, 'tinymce_popup' ), 100 );
 		}
 	}
-	
-	
+
+
 	/**
 	 * Declare script for new button
 	 *
@@ -133,24 +133,24 @@ class Genesis_Columns_Advanced {
 	public function tinymce_popup() {
 		include_once dirname( __FILE__ ) . '/tinymce/popup.php';
 	}
-	
-	
+
+
 	/**
 	 * Loads scripts/styles to the admin
 	 *
 	 * @since 1.0.0
 	 */
 	function admin_scripts_enqueue() {
-		
+
 		wp_register_script( 'gca-popup-scripts', plugin_dir_url( __FILE__ ) . 'tinymce/js/popup.js' );
 		wp_enqueue_script( 'gca-popup-scripts' );
-	
+
 		// Used for adding translations to javascript
-		wp_localize_script( 
-			'gca-popup-scripts', 
-			'gca_localize_scripts', 
-			array( 
-				'first_column' 	 => __( 'Place your content for the first column here.', 'genesis-columns-advanced' ), 
+		wp_localize_script(
+			'gca-popup-scripts',
+			'gca_localize_scripts',
+			array(
+				'first_column' 	 => __( 'Place your content for the first column here.', 'genesis-columns-advanced' ),
 				'second_column'  => __( 'Place your content for the second column here.', 'genesis-columns-advanced' ),
 				'third_column'	 => __( 'Place your content for the third column here.', 'genesis-columns-advanced' ),
 				'fourth_column'  => __( 'Place your content for the fourth column here.', 'genesis-columns-advanced' ),
@@ -178,29 +178,17 @@ class Genesis_Columns_Advanced {
 			wp_enqueue_style( 'gca-column-styles',  plugin_dir_url( __FILE__ ) . 'css/gca-column-styles.css' );
 		}
 	}
-	
-	
-	/**
-	 * Loop through all of the available shortcodes and add them to WP
-	 *
-	 * @since 2.0.0
-	 */
+
+
 	public function add_shortcodes() {
 		foreach ( $this->get_shortcodes() as $shortcode => $atts ) {
 			add_shortcode( $shortcode, array( $this, 'shortcodes' ) );
 		}
 	}
-	
-	
-	/**
-	 * Loads the optional stylesheet to the frontend if Genesis is not active
-	 *
-	 * @since 2.0.0
-	 *
-	 * @return array $all_shortcodes An array of all the shorcodes provided by this plugin
-	 */
+
+
 	public function get_shortcodes() {
-	
+
 		static $all_shortcodes;
 
 		if ( ! empty( $all_shortcodes ) ) {
@@ -208,7 +196,7 @@ class Genesis_Columns_Advanced {
 		}
 
 		// define shortcodes
-		$shortcodes = apply_filters( 'gca_shortcodes', array(
+		$shortcodes = apply_filters( 'NEED_shortcodes', array(
 			'one-half' 			=> array( 'type' => 'column' ),
 			'one-third' 		=> array( 'type' => 'column' ),
 			'two-thirds' 		=> array( 'type' => 'column' ),
@@ -224,37 +212,29 @@ class Genesis_Columns_Advanced {
 			'three-sixths' 		=> array( 'type' => 'column' ),
 			'four-sixths' 		=> array( 'type' => 'column' ),
 			'five-sixths' 		=> array( 'type' => 'column' ),
-			
+
 			'clearfix' 			=> array( 'type' => 'utility' ),
 			'vertical-spacer' 	=> array( 'type' => 'utility' ),
 			'columns-container' => array( 'type' => 'utility' ),
 		));
-		
+
 		if ( ! $shortcodes ) {
 			return array();
 		}
-		
-		
-		foreach ( $shortcodes as $shortcode => $atts ) {
 
-			// add prefix
-			// $shortcode = $this->prefix . $shortcode;
+
+		foreach ( $shortcodes as $shortcode => $atts ) {
 
 			$all_shortcodes[$shortcode] =	array(
 				'class' => $shortcode,
 				'type'	=> $atts['type']
 			);
-			
-			// If it's a utlity shortcode, don't add the corresponding first or last shortcode
+
+			// If it's a utlity shortcode, don't add the corresponding first shortcode
 			if ( $atts['type'] == 'column' ) {
 
 				$all_shortcodes[$shortcode . '-first'] =	array(
-					'class'	=> $shortcode . ' first ' . apply_filters( 'gca_first_column_identifier_class', 'gca-first' ),
-					'type'	=> $atts['type']
-				);
-				
-				$all_shortcodes[$shortcode . '-last'] =	array(
-					'class'	=> $shortcode . ' ' . apply_filters( 'gca_last_column_identifier_class', 'gca-last' ),
+					'class'	=> $shortcode . ' first',
 					'type'	=> $atts['type']
 				);
 			}
@@ -262,134 +242,79 @@ class Genesis_Columns_Advanced {
 
 		return $all_shortcodes;
 	}
-	
-	
-	/**
-	 * Builds the frontend shortcode markup
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param array $atts     An array of all the available shortcode atts
-	 * @param string $content The content wrapped by the shortcode, if the shortcode wraps content
-	 * @param string $name    The name of the shortcode
-	 * @return string $output An array of all the shorcodes provided by this plugin
-	 */
+
+
 	public function shortcodes( $atts, $content = null, $name ) {
-		
+
 		$atts = shortcode_atts( array(
 			'id' 	=> '',
 			'class' => '',
 			'style'	=> '',
 		), $atts );
-		
+
 		// Get array of all shortcode to retrieve additional attributes
 		$all_shortcodes = $this->get_shortcodes();
-		
+
 		// Determine the type of shortcode we are working with
 		$type  = $all_shortcodes[$name]['type'];
-		
+
 		// Setup the markup and identifier (both filterable)
 		$markup     = ( $type == 'utility' ) ? apply_filters( 'gca_utility_markup', 'div' ) : apply_filters( 'gca_column_markup', 'div' );
 		$identifier = ( $type == 'utility' ) ? apply_filters( 'gca_utility_identifier_class', 'gca-utility' ) : apply_filters( 'gca_column_identifier_class', 'gca-column' );
-		
+
 		// Setup the id
 		$id = sanitize_text_field( $atts['id'] );
-		$id = ( $id != '' ) ? ' id="' . $id . '"' : '';
-		
+		$id = ( $id != '' ) ? ' id="' . esc_attr( $id ) . '"' : '';
+
 		// Setup the classes
-		$class         = ' ' . $all_shortcodes[$name]['class'];	
-		$extra_classes = sanitize_text_field( $atts['class'] ); 
+		$class         = ' ' . $all_shortcodes[$name]['class'];
+		$extra_classes = sanitize_text_field( $atts['class'] );
 		$extra_classes = ( $extra_classes != '' ) ? ' ' . $extra_classes : '';
-		$class         = ' class="' . $identifier . $class . $extra_classes . '"';
-		
+		$class         = ' class="' . esc_attr( $identifier ) . esc_attr( $class ) . esc_attr( $extra_classes ) . '"';
+
 		// Setup the styles
-		$style = sanitize_text_field( $atts['style'] ); 
-		$style = ( $style != '' ) ? ' style="' . $style . '"' : '';
-		
+		$style = sanitize_text_field( $atts['style'] );
+		$style = ( $style != '' ) ? ' style="' . esc_attr( $style ) . '"' : '';
+
 		// Setup the content
 		$content = ( $content ) ? $this->content_strip_autop( $content ) : '';
-		
-		// Add content before column block
-		$output = strpos( $class, 'first' ) != false ? apply_filters( 'gca_before_columns', '', $class, $name ) : '';
-		
+
 		// Built output
-		$output .= '<' . $markup . $id . $class . $style . '>' . $content . '</' . $markup . '>';
-		
-		/// Add content after column block
-		$output .= strpos( $name, 'last' ) != false ? apply_filters( 'gca_after_columns', '<div class="gca-utility column-clear"></div>', $class, $name ) : '';
-		
+		$output = '<' . esc_attr( $markup ) . $id . $class . $style . '>' . $content . '</' . esc_attr( $markup ) . '>';
+
 		return $output;
 	}
-	
-	
+
+
 	/**
 	 * Strip content of AutoP
 	 * Courtesy of Mathew Smith (Genesis Easy Columns)
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $content  The content entered into each column shortcode
-	 * @return string $content A string of filtered content
 	 */
 	public function content_strip_autop( $content ){
 		$content = preg_replace( '#^<\/p>|^<br \/>|<p>$#', '', $content );
 		$content = do_shortcode( shortcode_unautop( trim( $content ) ) );
 		return $content;
 	}
-	
-	
+
+
 	/**
-	 * Filters the page content to remove any extra paragraph or break tags caused by shortcodes.
+	 * Filters the content to remove any extra paragraph or break tags caused by shortcodes.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param string $content The content on the page
+	 * @param string $content The content entered into each column shortcode
 	 * @return string A string of filtered content
 	 */
 	function shortcode_empty_paragraph_fix( $content ) {
 		$array = array(
-		
-			// Columns
-			'<p>[one'      	 => '[one',
-			'<p>[two'        => '[two',
-			'<p>[three'    	 => '[three',
-			'<p>[four'     	 => '[four',
-			'<p>[five'     	 => '[five',
-			'first]</p>'   	 => 'first]',
-			'last]</p>'    	 => 'last]',
-			'half]</p>'    	 => 'half]',
-			'third]</p>'   	 => 'third]',
-			'thirds]</p>'  	 => 'thirds]',
-			'fourth]</p>'  	 => 'fourth]',
-			'fourths]</p>' 	 => 'fourths]',
-			'fifth]</p>'   	 => 'fifth]',
-			'fifths]</p>'  	 => 'fifths]',
-			'sixth]</p>'   	 => 'sixth]',
-			'sixths]</p>'  	 => 'sixths]',
-			'first]<br />' 	 => 'first]',
-			'last]<br />'  	 => 'last]',
-			'half]<br />'  	 => 'half]',
-			'third]<br />' 	 => 'third]',
-			'thirds]<br />'  => 'thirds]',
-			'fourth]<br />'  => 'fourth]',
-			'fourths]<br />' => 'fourths]',
-			'fifth]<br />' 	 => 'fifth]',
-			'fifths]<br />'  => 'fifths]',
-			'sixth]<br />' 	 => 'sixth]',
-			'sixths]<br />'  => 'sixths]',
-			
-			// Utilities
-			// Since clearfix and verical-spacer don't wrap content, can't currently strip <br />
-			'<p>[columns-container'    => '[columns-container',
-			'columns-container]</p>'   => 'columns-container]',
-			'columns-container]<br />' => 'columns-container]',
-			'<p>[clearfix'			   => '[clearfix',
-			'<p>[vertical-spacer'	   => '[vertical-spacer',
+			'<p>['    => '[',
+			']</p>'   => ']',
+			']<br />' => ']'
 		);
 		return strtr( $content, $array );
 	}
-	
-	
+
+
 	/**
 	 * Adds additional links to the plugin row meta links
 	 *
@@ -422,7 +347,7 @@ class Genesis_Columns_Advanced {
 
 		return $links;
 	}
-	
+
 }
 
 new Genesis_Columns_Advanced();
